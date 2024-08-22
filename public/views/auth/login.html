@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - Boutique en Ligne</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-focus:focus {
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            transform: scale(1.02);
+            transition: all 0.3s ease;
+        }
+
+        .btn-hover:hover {
+            background-color: #FFB74D;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 183, 77, 0.3);
+        }
+
+        .parallax-shape {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+    <div class="bg-white shadow-2xl rounded-lg overflow-hidden max-w-4xl w-full grid grid-cols-1 md:grid-cols-2">
+        <!-- Section gauche : Image et texte -->
+        <div class="relative bg-gradient-to-br from-blue-900 to-blue-700 p-8 text-white flex flex-col justify-center">
+            <!-- Formes décoratives en arrière-plan avec effet de parallaxe -->
+            <div class="absolute top-0 left-0 bg-yellow-400 w-24 h-24 rounded-full transform -translate-x-12 -translate-y-12 parallax-shape"></div>
+            <div class="absolute bottom-0 right-0 bg-yellow-400 w-36 h-36 rounded-full transform translate-x-12 translate-y-12 parallax-shape"></div>
+
+            <div class="relative z-10">
+                <img src="logo.png" alt="Logo de la boutique" class="w-24 mx-auto mb-4 animate-pulse">
+                <h2 class="text-4xl font-extrabold mb-4 text-center">Bienvenue <br> Diallo Boutique</h2>
+                <p class="text-lg text-blue-200 mb-6 text-center">La plateforme idéale pour gérer vos ventes, articles et clients avec efficacité.</p>
+            </div>
+        </div>
+
+        <!-- Section droite : Formulaire de connexion -->
+        <div class="p-10 flex flex-col justify-center">
+            <h1 class="text-4xl font-bold text-gray-800 mb-6 text-center">Connexion</h1>
+            <p class="text-lg text-gray-500 text-center mb-8">Connectez-vous pour accéder à votre espace de gestion.</p>
+
+            <form action="dashboard.html" method="POST" class="space-y-6">
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">Adresse e-mail</label>
+                    <input type="email" id="email" name="email" required
+                        class="w-full mt-1 px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 form-focus"
+                        placeholder="exemple@domaine.com">
+                </div>
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700">Mot de passe</label>
+                    <input type="password" id="password" name="password" required
+                        class="w-full mt-1 px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 form-focus"
+                        placeholder="••••••••">
+                </div>
+                <button type="submit"
+                    class="w-full bg-yellow-500 text-white py-3 rounded-lg font-semibold hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 btn-hover transition-all">
+                    Se connecter
+                </button>
+                <div class="flex justify-between items-center mt-4 text-sm">
+                    <a href="forgot-password.html" class="text-blue-600 hover:text-blue-800 transition-colors">Mot de passe oublié?</a>
+                    <a href="register.html" class="text-gray-700 hover:text-gray-900 transition-colors">Annuler</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
