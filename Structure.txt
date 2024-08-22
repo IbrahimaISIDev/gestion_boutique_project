@@ -1,0 +1,41 @@
+GESTION_BOUTIQUE_PROJECT/
+├── public/
+│   ├── assets/
+│   │   ├── css/
+│   │   │   ├── tailwind.css    # Fichier CSS avec directives Tailwind
+│   │   │   └── styles.css      # Fichier CSS final compilé
+│   │   ├── js/
+│   │   │   └── scripts.js      # Scripts JavaScript spécifiques au projet
+│   │   └── images/             # Dossier pour les images utilisées dans le projet
+│   │       └── logo.png        # Logo de la boutique, par exemple
+│   ├── index.html              # Page d'accueil ou de redirection
+│   ├── login.html              # Page de connexion
+│   ├── dashboard.html          # Tableau de bord du boutiquier
+│   ├── admin.html              # Page pour le super administrateur
+│   ├── client.html             # Page pour les clients
+│   └── 404.html                # Page d'erreur 404
+├── views/
+│   ├── components/
+│   │   ├── header.html         # En-tête commun
+│   │   ├── footer.html         # Pied de page commun
+│   │   ├── sidebar.html        # Barre latérale commune
+│   │   └── navbar.html         # Barre de navigation commune
+│   ├── Client/
+│   │   └── profile.html        # Profil client
+│   │   └── dashboard.html      # Tableau de bord du client
+│   ├── Boutiquier/
+│   │   └── orders.html         # Page des commandes pour le boutiquier
+│   │   └── inventory.html      # Gestion des stocks pour le boutiquier
+│   ├── SuperAdmin/
+│   │   └── manage-users.html   # Gestion des utilisateurs
+│   │   └── reports.html        # Rapports pour le super administrateur
+│   └── auth/
+│       └── login.html          # Page de connexion spécifique
+│       └── register.html       # Page d'inscription
+├── config/
+│   ├── postcss.config.js       # Configuration de PostCSS
+│   ├── tailwind.config.js      # Configuration de Tailwind CSS
+│   └── routes.js               # Fichier de gestion des routes (si nécessaire)
+├── package.json                # Dépendances et scripts npm
+├── README.md                   # Documentation du projet
+└── .gitignore                  # Fichier pour ignorer certains fichiers dans Git
