@@ -12,6 +12,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap"
         rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
@@ -20,7 +22,7 @@
         }
 
         .sidebar {
-            width: 300px;
+            width: 250px;
             background: linear-gradient(to right,
                     #2b6cb0,
                     #2d3748);
@@ -32,7 +34,7 @@
             align-items: center;
             padding: 1rem;
             color: #ffffff;
-            font-size: 25px;
+            font-size: 20px;
             text-decoration: none;
             transition: background-color 0.2s, padding-left 0.2s, z-index 0.2s;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -57,13 +59,13 @@
         .content {
             padding-left: 2rem;
             background-color: #f7fafc;
-            width: calc(100% - 300px);
+            width: calc(100% - 250px);
             min-height: 100vh;
         }
 
         .header-user {
             position: relative;
-            width: 13%;
+            width: 10%;
             display: flex;
             justify-content: end;
         }
@@ -90,9 +92,9 @@
         .search-bar input {
             border-radius: 1rem;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-            padding: 0.5rem 5rem;
+            padding: 0.2rem 5rem;
             width: 90%;
-            font-size: 35px;
+            font-size: 25px;
         }
 
         .card {
@@ -127,6 +129,7 @@
 
         .header {
             border-bottom-left-radius: 20px;
+            height: 10%;
         }
 
         table {
@@ -176,20 +179,18 @@
                     <span class=" text-white font-bold text-xl">BOUTIQUE</span>
                 </div>
             </div>
-            <a href="#" class="active">
-                <i class="fas fa-tachometer-alt text-lg mr-3"></i> Dashboard
-            </a>
-            <a href="#"> <i class="fas fa-dollar-sign text-lg mr-3"></i> Dettes </a>
-            <a href="#"> <i class="fas fa-users text-lg mr-3"></i> Clients </a>
-            <a href="#"> <i class="fas fa-box text-lg mr-3"></i> Articles </a>
-            <a href="#"> <i class="fas fa-envelope text-lg mr-3"></i> Demandes </a>
+            <a href="#"><i class="fas fa-tachometer-alt text-lg mr-3"></i> Dashboard</a>
+            <a href="#"><i class="fas fa-dollar-sign text-lg mr-3"></i> Dettes </a>
+            <a href="#"><i class="fas fa-users text-lg mr-3"></i> Clients </a>
+            <a href="#"><i class="fas fa-box text-lg mr-3"></i> Articles </a>
+            <a href="#"><i class="fas fa-envelope text-lg mr-3"></i> Demandes </a>
         </div>
         <!-- Contenu principal -->
         <div class="content ml-auto">
-            <header class="flex justify-between items-center bg-white shadow-md p-4 header">
+            <header class="flex justify-between items-center bg-white shadow-md px-4 py-1 header">
                 <!-- Barre de recherche globale -->
                 <div class="search-bar flex">
-                    <button class="mr-4 text-gray-500 shadow-md">
+                    <button class="mr-2 text-gray-500">
                         <svg class="w-12 h-12 font-bold" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -200,19 +201,21 @@
                         class="focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all w-3/4" />
                 </div>
                 <!-- Informations utilisateur -->
-                <div class="header-user flex items-center">
+                <button class="header-user flex items-center" data-popover-target="popover-bottom"
+                    data-popover-placement="bottom" type="button" data-popover-trigger="click">
                     <img src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2" alt="Photo Utilisateur"
-                        class="w-20 h-20 rounded-full border-2 border-blue-500" />
-                    <div class="border-2 border-black pl-6 py-1">
-                        <p class="text-gray-700 font-semibold">OUSSEYNOU</p>
-                        <p class="text-gray-700 font-semibold">DIEDHIOU</p>
+                        class="w-16 h-16 rounded-full border-2 border-blue-500" />
+                    <div class="border-2 border-black pl-4 py-1">
+                        <p class="text-gray-700 text-sm font-semibold">OUSSEYNOU</p>
+                        <p class="text-gray-700 text-sm font-semibold">DIEDHIOU</p>
                     </div>
-                </div>
-                <div x-show="open" @click.away="open = true"
-                    class="absolute right-2 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 hidden" style="top: 3rem">
+                </button>
+                <div data-popover id="popover-bottom" role="tooltip"
+                    class="absolute right-2 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 invisible"
+                    style="top: 3rem">
                     <div class="px-4 py-2 text-center">
-                        <img class="w-16 h-16 rounded-full mx-auto" src="https://via.placeholder.com/64"
-                            alt="User avatar" />
+                        <img class="w-16 h-16 rounded-full mx-auto"
+                            src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2" alt="User avatar" />
                         <p class="mt-2 font-semibold">OUSSEYNOU DIEDHIOU</p>
                     </div>
                     <a href="#" class="block px-4 py-2 text-sm text-center text-gray-700 hover:bg-gray-100">MODIFIER</a>
