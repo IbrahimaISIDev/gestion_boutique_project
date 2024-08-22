@@ -39,3 +39,43 @@ GESTION_BOUTIQUE_PROJECT/
 ├── package.json                # Dépendances et scripts npm
 ├── README.md                   # Documentation du projet
 └── .gitignore                  # Fichier pour ignorer certains fichiers dans Git
+
+
+-------------------------------------------------Voici la nouvelle Structure qui prévoit le déploiement au niveau de GitHub Pages !!!------------------
+
+GESTION_BOUTIQUE_PROJECT/
+├── assets/
+│   ├── css/
+│   │   ├── tailwind.css    # Fichier CSS avec directives Tailwind
+│   │   └── styles.css      # Fichier CSS final compilé
+│   ├── js/
+│   │   └── scripts.js      # Scripts JavaScript spécifiques au projet
+│   └── images/             # Dossier pour les images utilisées dans le projet
+│       └── logo.png        # Logo de la boutique, par exemple
+├── components/
+│   ├── header.html         # En-tête commun
+│   ├── footer.html         # Pied de page commun
+│   ├── sidebar.html        # Barre latérale commune
+│   └── navbar.html         # Barre de navigation commune
+├── client/
+│   ├── index.html          # Page d'accueil du client
+│   ├── profile.html        # Profil client
+│   ├── dashboard.html      # Tableau de bord du client
+│   └── orders.html         # Commandes du client
+├── admin/
+│   ├── index.html          # Page d'accueil de l'admin
+│   ├── manage-users.html   # Gestion des utilisateurs
+│   ├── reports.html        # Rapports de l'admin
+│   └── settings.html       # Paramètres de l'admin
+├── dashboard/
+│   ├── index.html          # Page d'accueil du tableau de bord
+│   ├── sales.html          # Ventes
+│   ├── inventory.html      # Inventaire
+│   ├── orders.html         # Commandes
+│   └── reports.html        # Rapports
+├── index.html              # Page d'accueil ou de redirection générale
+├── login.html              # Page de connexion
+├── 404.html                # Page d'erreur 404
+├── .gitignore              # Fichier pour ignorer certains fichiers dans Git
+├── README.md               # Documentation du projet
+└── package.json            # Dépendances et scripts npm (si nécessaires pour la génération des fichiers)
