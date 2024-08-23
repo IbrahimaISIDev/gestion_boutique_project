@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Gestion de Boutique</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/tailwind.css">
+<script src="/assets/js/scripts.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+        body {
+            font-family: "Poppins", sans-serif;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(to right,
+                    #2b6cb0,
+                    #2d3748);
+            height: 100vh;
+        }
+
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            color: #ffffff;
+            font-size: 20px;
+            text-decoration: none;
+            transition: background-color 0.2s, padding-left 0.2s, z-index 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar a i {
+            font-size: 25px;
+        }
+
+        .sidebar a:hover {
+            background-color: #4a5568;
+            padding-left: 1.5rem;
+            z-index: 10;
+        }
+
+        .sidebar .active {
+            background-color: #4a5568;
+            margin-top: 10%;
+            font-weight: 600;
+        }
+
+        .content {
+            padding-left: 2rem;
+            background-color: #f7fafc;
+            width: calc(100% - 250px);
+            min-height: 100vh;
+        }
+
+        .header-user {
+            position: relative;
+            width: 10%;
+            display: flex;
+            justify-content: end;
+        }
+
+        .header-user img {
+            position: absolute;
+            left: 0%;
+            border: 2px solid black;
+        }
+
+        .header-user div {
+            width: 70%;
+            right: 0%;
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+
+        .search-bar {
+            width: 60%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .search-bar input {
+            border-radius: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            padding: 0.2rem 5rem;
+            width: 90%;
+            font-size: 25px;
+        }
+
+        .card {
+            background: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 0.375rem;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .card h3 {
+            font-size: 1.125rem;
+            color: #2d3748;
+            margin-left: 0.5rem;
+        }
+
+        .card p {
+            font-size: 2rem;
+            color: #2d3748;
+        }
+
+        .card .icon {
+            width: 2rem;
+            height: 2rem;
+            display: inline-block;
+        }
+
+        .card .icon+h3 {
+            margin-left: 0.5rem;
+        }
+
+        .header {
+            border-bottom-left-radius: 20px;
+            height: 10%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 1rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f7fafc;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f1f5f9;
+        }
+
+        thead th {
+            background-color: #2b6cb0;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <div class="flex">
+        <!-- Sidebar -->
+        <div class="sidebar fixed top-0 left-0 flex flex-col">
+            <div class="p-4 flex items-center h-32">
+                <svg class="w-20 h-20 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="24" rx="4" fill="white" />
+                    <path
+                        d="M17 8H7C5.89543 8 5 8.89543 5 10V16C5 17.1046 5.89543 18 7 18H17C18.1046 18 19 17.1046 19 16V10C19 8.89543 18.1046 8 17 8Z"
+                        stroke="#1E40AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path
+                        d="M12 12C12.5523 12 13 11.5523 13 11C13 10.4477 12.5523 10 12 10C11.4477 10 11 10.4477 11 11C11 11.5523 11.4477 12 12 12Z"
+                        stroke="#1E40AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M16 16H8" stroke="#1E40AF" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                <div class="flex flex-col">
+                    <span class="text-white font-bold text-xl">GESTION</span>
+                    <span class=" text-white font-bold text-xl">BOUTIQUE</span>
+                </div>
+            </div>
+            <a href="../SuperAdmin/dashboard.html"><i class="fas fa-tachometer-alt text-lg mr-3"></i> Dashboard</a>
+            <a href="../Boutiquier/sidebard.html"><i class="fas fa-dollar-sign text-lg mr-3"></i> Dettes </a>
+            <a href="../Boutiquier/searchClient.html"><i class="fas fa-users text-lg mr-3"></i> Clients </a>
+            <a href="../Boutiquier/articles.html"><i class="fas fa-box text-lg mr-3"></i> Articles </a>
+            <a href="../Boutiquier/demandes.html"><i class="fas fa-envelope text-lg mr-3"></i> Demandes </a>
+            <a href="../SuperAdmin/users.html"><i class="fas fa-user text-lg mr-3"></i> Users </a>
+        </div>
+        <!-- Contenu principal -->
+        <div class="content ml-auto">
+            <header class="flex justify-between items-center bg-white shadow-md px-4 py-1 header">
+                <!-- Barre de recherche globale -->
+                <div class="search-bar flex">
+                    <button class="mr-2 text-gray-500">
+                        <svg class="w-12 h-12 font-bold" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                    <input type="text" placeholder="Rechercher dans votre boutique..."
+                        class="focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all w-3/4" />
+                </div>
+                <!-- Informations utilisateur -->
+                <button class="header-user flex items-center" data-popover-target="popover-bottom"
+                    data-popover-placement="bottom" type="button" data-popover-trigger="click">
+                    <img src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2" alt="Photo Utilisateur"
+                        class="w-16 h-16 rounded-full border-2 border-blue-500" />
+                    <div class="border-2 border-black pl-4 py-1">
+                        <p class="text-gray-700 text-sm font-semibold">OUSSEYNOU</p>
+                        <p class="text-gray-700 text-sm font-semibold">DIEDHIOU</p>
+                    </div>
+                </button>
+                <div data-popover id="popover-bottom" role="tooltip"
+                    class="absolute right-2 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 invisible"
+                    style="top: 3rem">
+                    <div class="px-4 py-2 text-center">
+                        <img class="w-16 h-16 rounded-full mx-auto"
+                            src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2" alt="User avatar" />
+                        <p class="mt-2 font-semibold">OUSSEYNOU DIEDHIOU</p>
+                    </div>
+                    <a href="#" class="block px-4 py-2 text-sm text-center text-gray-700 hover:bg-gray-100">MODIFIER</a>
+                    <a href="../auth/login.html"
+                        class="block px-4 py-2 text-sm text-center text-gray-700 hover:bg-gray-100">DECONNEXION</a>
+                </div>
+            </header>
+            <main class="mt-8 mr-8 rounded-xl bg-white p-4 shadow-sm flex flex-col">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Cartes statistiques -->
+                    <div class="card bg-gradient-to-b from-gray-300 to-gray-400 text-white p-6 rounded-3xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
+                        <i class="fas fa-money-bill-wave icon text-green-500"></i>
+                        <div>
+                            <h3>Total des Dettes</h3>
+                            <p class="font-bold">500.000 CFA</p>
+                        </div>
+                    </div>
+
+                    <div class="card bg-gradient-to-b from-gray-300 to-gray-400 text-white p-6 rounded-3xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
+                        <i class="fas fa-users icon text-blue-500"></i>
+                        <div>
+                            <h3>Nombre de Clients</h3>
+                            <p class="font-bold">120</p>
+                        </div>
+                    </div>
+
+                    <div class="card bg-gradient-to-b from-gray-300 to-gray-400 text-white p-6 rounded-3xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
+                        <i class="fas fa-boxes icon text-yellow-500"></i>
+                        <div>
+                            <h3>Articles en Stock</h3>
+                            <p class="font-bold">250</p>
+                        </div>
+                    </div>
+
+                    <div class="card bg-gradient-to-b from-gray-300 to-gray-400 text-white p-6 rounded-3xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
+                        <i class="fas fa-exclamation-circle icon text-red-500"></i>
+                        <div>
+                            <h3>Demandes en Cours</h3>
+                            <p class="font-bold">15</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section des deux tableaux -->
+                <section class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Tableau des Clients -->
+                    <div class="overflow-x-auto">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-4">
+                            Liste des Clients
+                        </h2>
+                        <table class="bg-white shadow-lg rounded-lg">
+                            <thead>
+                                <tr>
+                                    <th class="py-3 px-6 text-center">Nom</th>
+                                    <th class="py-3 px-6 text-center">Prénom</th>
+                                    <th class="py-3 px-6 text-center">Telephone</th>
+                                    <th class="py-3 px-6 text-center">Montant Dette</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="py-3 px-6 text-center">John</td>
+                                    <td class="py-3 px-6 text-center">Doe</td>
+                                    <td class="py-3 px-6 text-center">77 123 45 67</td>
+                                    <td class="py-3 px-6 text-center">45000 FCFA</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3 px-6 text-center">Amina</td>
+                                    <td class="py-3 px-6 text-center">Diop</td>
+                                    <td class="py-3 px-6 text-center">78 987 65 43</td>
+                                    <td class="py-3 px-6 text-center">35000 FCFA</td>
+                                </tr>
+                                <!-- Ajoutez d'autres lignes selon les données disponibles -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Tableau des Articles en Rupture de Stock -->
+                    <div class="overflow-x-auto">
+                        <h2 class="text-xl font-semibold text-gray-800 mb-4">
+                            Articles en Rupture de Stock
+                        </h2>
+                        <table class="bg-white shadow-lg rounded-lg">
+                            <thead>
+                                <tr>
+                                    <th class="py-3 px-6 text-center">Article</th>
+                                    <th class="py-3 px-6 text-center">Quantité Restante</th>
+                                    <th class="py-3 px-6 text-center">prix</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="py-3 px-6 text-center">Savon</td>
+                                    <td class="py-3 px-6 text-center">0</td>
+                                    <td class="py-3 px-6 text-center">300 FCFA</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-3 px-6 text-center">Shampooing</td>
+                                    <td class="py-3 px-6 text-center">2</td>
+                                    <td class="py-3 px-6 text-center">2020 FCFA</td>
+                                </tr>
+                                <!-- Ajoutez d'autres lignes selon les données disponibles -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
