@@ -2,43 +2,44 @@ GESTION_BOUTIQUE_PROJECT/
 ├── public/
 │   ├── assets/
 │   │   ├── css/
-│   │   │   ├── tailwind.css    # Fichier CSS avec directives Tailwind
-│   │   │   └── styles.css      # Fichier CSS final compilé
+│   │   │   ├── tailwind.css    
+│   │   │   └── styles.css      
 │   │   ├── js/
-│   │   │   └── scripts.js      # Scripts JavaScript spécifiques au projet
-│   │   └── images/             # Dossier pour les images utilisées dans le projet
-│   │       └── logo.png        # Logo de la boutique, par exemple
-│   ├── index.html              # Page d'accueil ou de redirection
-│   ├── login.html              # Page de connexion
-│   ├── dashboard.html          # Tableau de bord du boutiquier
-│   ├── admin.html              # Page pour le super administrateur
-│   ├── client.html             # Page pour les clients
-│   └── 404.html                # Page d'erreur 404
+│   │   │   └── scripts.js      
+│   │   └── images/             
+│   │       └── logo.png                      
 ├── views/
-│   ├── components/
-│   │   ├── header.html         # En-tête commun
-│   │   ├── footer.html         # Pied de page commun
-│   │   ├── sidebar.html        # Barre latérale commune
-│   │   └── navbar.html         # Barre de navigation commune
-│   ├── Client/
-│   │   └── profile.html        # Profil client
-│   │   └── dashboard.html      # Tableau de bord du client
+│   ├── Client/       
+│   │   └── dashboard.html     
+│   │   └── ecranClient.html     
+│   │   └── mesDemandes.html     
+│   │   └── sidebar.html     
+│   │   └── voirDetails.html         
 │   ├── Boutiquier/
-│   │   └── orders.html         # Page des commandes pour le boutiquier
-│   │   └── inventory.html      # Gestion des stocks pour le boutiquier
+│   │   └── articles-paiements.html        
+│   │   └── articles.html        
+│   │   └── demandes.html        
+│   │   └── detailDemandes.html        
+│   │   └── listDettesClient.html        
+│   │   └── nouvelleDette.html        
+│   │   └── searchClient.html        
+│   │   └── sidebar.html                     
 │   ├── SuperAdmin/
-│   │   └── manage-users.html   # Gestion des utilisateurs
-│   │   └── reports.html        # Rapports pour le super administrateur
+│   │   └── dashboard.html   
+│   │   └── ecranAdmin.html   
+│   │   └── manage-users.html   
+│   │   └── sidebar.html   
+│   │   └── users.html           
 │   └── auth/
-│       └── login.html          # Page de connexion spécifique
-│       └── register.html       # Page d'inscription
+│       └── login.html         
+│       └── register.html      
 ├── config/
-│   ├── postcss.config.js       # Configuration de PostCSS
-│   ├── tailwind.config.js      # Configuration de Tailwind CSS
-│   └── routes.js               # Fichier de gestion des routes (si nécessaire)
-├── package.json                # Dépendances et scripts npm
-├── README.md                   # Documentation du projet
-└── .gitignore                  # Fichier pour ignorer certains fichiers dans Git
+│   ├── postcss.config.js      
+│   ├── tailwind.config.js       
+│   └── routes.js             
+├── package.json               
+├── README.md                   
+└── .gitignore                 
 
 
 -------------------------------------------------Voici la nouvelle Structure qui prévoit le déploiement au niveau de GitHub Pages !!!------------------
@@ -51,23 +52,18 @@ GESTION_BOUTIQUE_PROJECT/
 │   ├── js/
 │   │   └── scripts.js      # Scripts JavaScript spécifiques au projet
 │   └── images/             # Dossier pour les images utilisées dans le projet
-│       └── logo.png        # Logo de la boutique, par exemple
-├── components/
-│   ├── header.html         # En-tête commun
-│   ├── footer.html         # Pied de page commun
-│   ├── sidebar.html        # Barre latérale commune
-│   └── navbar.html         # Barre de navigation commune
+│       └── logo.png        # Logo de la boutique, par exemple        # Barre de navigation commune
 ├── client/
 │   ├── index.html          # Page d'accueil du client
 │   ├── profile.html        # Profil client
 │   ├── dashboard.html      # Tableau de bord du client
 │   └── orders.html         # Commandes du client
-├── admin/
+├── SuperAdmin/
 │   ├── index.html          # Page d'accueil de l'admin
 │   ├── manage-users.html   # Gestion des utilisateurs
 │   ├── reports.html        # Rapports de l'admin
 │   └── settings.html       # Paramètres de l'admin
-├── dashboard/
+├── Boutiquier/
 │   ├── index.html          # Page d'accueil du tableau de bord
 │   ├── sales.html          # Ventes
 │   ├── inventory.html      # Inventaire
