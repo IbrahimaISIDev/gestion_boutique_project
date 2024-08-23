@@ -61,25 +61,26 @@
             <h1 class="text-4xl font-bold text-gray-800 mb-6 text-center">Connexion</h1>
             <p class="text-lg text-gray-500 text-center mb-8">Connectez-vous pour accéder à votre espace de gestion.</p>
 
-            <form action="dashboard.html" method="POST" class="space-y-6">
+            <form action="../Boutiquier/sidebard.html" method="POST" class="space-y-6">
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-700">Adresse e-mail</label>
-                    <input type="email" id="email" name="email" required
+                    <input type="email" id="email" name="email"
                         class="w-full mt-1 px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 form-focus"
                         placeholder="exemple@domaine.com">
                 </div>
                 <div>
                     <label for="password" class="block text-sm font-medium text-gray-700">Mot de passe</label>
-                    <input type="password" id="password" name="password" required
+                    <input type="password" id="password" name="password"
                         class="w-full mt-1 px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 form-focus"
                         placeholder="••••••••">
                 </div>
                 <button type="submit"
                     class="w-full bg-yellow-500 text-white py-3 rounded-lg font-semibold hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 btn-hover transition-all">
-                    Se connecter
+                    <a href="../SuperAdmin/dashboard.html">Se connecter</a>
+                    
                 </button>
                 <div class="flex justify-between items-center mt-4 text-sm">
-                    <a href="forgot-password.html" class="text-blue-600 hover:text-blue-800 transition-colors">Mot de passe oublié?</a>
+                    <a href="../Client/mesDemandes.html" class="text-blue-600 hover:text-blue-800 transition-colors">Mot de passe oublié?</a>
                     <a href="register.html" class="text-gray-700 hover:text-gray-900 transition-colors">Annuler</a>
                 </div>
             </form>

@@ -6,185 +6,267 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard - Gestion de Boutique</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap"
-        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
     <style>
-        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
-        body {
-            font-family: "Poppins", sans-serif;
-        }
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
-        .sidebar {
-            width: 250px;
-            background: linear-gradient(to right,
-                    #2b6cb0,
-                    #2d3748);
-            height: 100vh;
-        }
+body {
+    font-family: "Poppins", sans-serif;
+}
 
-        .sidebar a {
-            display: flex;
-            align-items: center;
-            padding: 1rem;
-            color: #ffffff;
-            font-size: 20px;
-            text-decoration: none;
-            transition: background-color 0.2s, padding-left 0.2s, z-index 0.2s;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    background: linear-gradient(to right, #2b6cb0, #2d3748);
+    height: 100vh;
+}
 
-        .sidebar a i {
-            font-size: 25px;
-        }
+.sidebar a {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    color: #ffffff;
+    font-size: 20px;
+    text-decoration: none;
+    transition: background-color 0.2s, padding-left 0.2s, z-index 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-        .sidebar a:hover {
-            background-color: #4a5568;
-            padding-left: 1.5rem;
-            z-index: 10;
-        }
+.sidebar a i {
+    font-size: 25px;
+}
 
-        .sidebar .active {
-            background-color: #4a5568;
-            margin-top: 10%;
-            font-weight: 600;
-        }
+.sidebar a:hover {
+    background-color: #4a5568;
+    padding-left: 1.5rem;
+    z-index: 10;
+}
 
-        .content {
-            padding-left: 2rem;
-            background-color: #f7fafc;
-            width: calc(100% - 250px);
-            min-height: 100vh;
-        }
+.sidebar .active {
+    background-color: #4a5568;
+    margin-top: 10%;
+    font-weight: 600;
+}
 
-        .header-user {
-            position: relative;
-            width: 10%;
-            display: flex;
-            justify-content: end;
-        }
+/* Content Styles */
+.content {
+    padding-left: 2rem;
+    background-color: #f7fafc;
+    width: calc(100% - 250px);
+    min-height: 100vh;
+}
 
-        .header-user img {
-            position: absolute;
-            left: 0%;
-            border: 2px solid black;
-        }
+/* Header User Styles */
+.header-user {
+    position: relative;
+    width: 10%;
+    display: flex;
+    justify-content: end;
+}
 
-        .header-user div {
-            width: 70%;
-            right: 0%;
-            border-top-right-radius: 15px;
-            border-bottom-right-radius: 15px;
-        }
+.header-user img {
+    position: absolute;
+    left: 0%;
+    border: 2px solid black;
+}
 
-        .search-bar {
-            width: 80%;
-            display: flex;
-            justify-content: space-between;
-        }
+.header-user div {
+    width: 70%;
+    right: 0%;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
 
-        .search-bar div {
-            border-radius: 1rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-            padding: 0.5rem 7rem;
-            width: 90%;
-            font-size: 35px;
-        }
+/* Search Bar Styles */
+.search-bar {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+}
 
-        .card {
-            background: #ffffff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 0.375rem;
-            padding: 1.5rem;
-            display: flex;
-            align-items: center;
-        }
+.search-bar input {
+    border-radius: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 0.2rem 5rem;
+    width: 90%;
+    font-size: 25px;
+}
 
-        .card h3 {
-            font-size: 1.125rem;
-            color: #2d3748;
-            margin-left: 0.5rem;
-        }
+/* Card Styles */
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
 
-        .card p {
-            font-size: 2rem;
-            color: #2d3748;
-        }
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
 
-        .card .icon {
-            width: 2rem;
-            height: 2rem;
-            display: inline-block;
-        }
+.card h3 {
+    font-size: 1.125rem;
+    color: #2d3748;
+    margin-left: 0.5rem;
+}
 
-        .card .icon+h3 {
-            margin-left: 0.5rem;
-        }
+.card p {
+    font-size: 2rem;
+    color: #2d3748;
+}
 
-        .header {
-            border-bottom-left-radius: 20px;
-            height: 10%;
-        }
+.card .icon {
+    width: 2rem;
+    height: 2rem;
+    display: inline-block;
+}
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+.card .icon+h3 {
+    margin-left: 0.5rem;
+}
 
-        th,
-        td {
-            padding: 1rem;
-            text-align: left;
-        }
+/* Header Styles */
+.header {
+    border-bottom-left-radius: 20px;
+    height: 10%;
+}
 
-        th {
-            background-color: #f7fafc;
-        }
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
 
-        tr:nth-child(even) {
-            background-color: #f1f5f9;
-        }
+th,
+td {
+    padding: 1rem;
+    text-align: left;
+}
 
-        thead th {
-            background-color: #2b6cb0;
-            color: #ffffff;
-        }
+th {
+    background-color: #f7fafc;
+}
+
+tr:nth-child(even) {
+    background-color: #f1f5f9;
+}
+
+thead th {
+    background-color: #2b6cb0;
+    color: #ffffff;
+}
+
+/* Toggle Switch Styles */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e5e7eb;
+    border-radius: 9999px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    border-radius: 50%;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: transform 0.3s;
+}
+
+input:checked + .slider {
+    background-color: #34d399;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Input Focus Styles */
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="file"] {
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="email"]:focus,
+input[type="file"]:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+input.input-shadow {
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+input.input-shadow:focus {
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+}
+
     </style>
 </head>
 
 <body class="bg-gray-100">
     <div class="flex">
         <!-- Sidebar -->
-        <div class="sidebar fixed top-0 left-0 flex flex-col">
+        <div class="sidebar fixed top-0 left-0 h-screen w-64 flex flex-col text-white">
             <div class="p-4 flex items-center h-32">
-                <svg class="w-20 h-20 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="40" height="24" rx="4" fill="white" />
-                    <path
-                        d="M17 8H7C5.89543 8 5 8.89543 5 10V16C5 17.1046 5.89543 18 7 18H17C18.1046 18 19 17.1046 19 16V10C19 8.89543 18.1046 8 17 8Z"
-                        stroke="#1E40AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    <path
-                        d="M12 12C12.5523 12 13 11.5523 13 11C13 10.4477 12.5523 10 12 10C11.4477 10 11 10.4477 11 11C11 11.5523 11.4477 12 12 12Z"
-                        stroke="#1E40AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M16 16H8" stroke="#1E40AF" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" />
+                <svg class="w-12 h-12 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="24" height="24" rx="4" fill="white" />
+                    <path d="M17 8H7C5.89543 8 5 8.89543 5 10V16C5 17.1046 5.89543 18 7 18H17C18.1046 18 19 17.1046 19 16V10C19 8.89543 18.1046 8 17 8Z" stroke="#1E40AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M12 12C12.5523 12 13 11.5523 13 11C13 10.4477 12.5523 10 12 10C11.4477 10 11 10.4477 11 11C11 11.5523 11.4477 12 12 12Z" stroke="#1E40AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M16 16H8" stroke="#1E40AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
                 <div class="flex flex-col">
-                    <span class="text-white font-bold text-xl">GESTION</span>
-                    <span class=" text-white font-bold text-xl">BOUTIQUE</span>
+                    <span class="font-bold text-xl">GESTION</span>
+                    <span class="font-bold text-xl">BOUTIQUE</span>
                 </div>
             </div>
-            <a href="../Client/mesDemandes.html"><i class="fas fa-envelope text-lg mr-3"></i> Mes Demandes </a>
-            <a href="../Client/voirDetails.html"><i class="fas fa-dollar-sign text-lg mr-3"></i> Dettes </a>
+            <nav class="flex-grow">
+                <a href="../SuperAdmin/dashboard.html"><i class="fas fa-tachometer-alt text-lg mr-3"></i> Dashboard</a>
+            <a href="../Boutiquier/sidebard.html"><i class="fas fa-dollar-sign text-lg mr-3"></i> Dettes </a>
+            <a href="../Boutiquier/searchClient.html"><i class="fas fa-users text-lg mr-3"></i> Clients </a>
+            <a href="../Boutiquier/articles.html"><i class="fas fa-box text-lg mr-3"></i> Articles </a>
+            <a href="../Boutiquier/demandes.html"><i class="fas fa-envelope text-lg mr-3"></i> Demandes </a>
+            <a href="../SuperAdmin/users.html"><i class="fas fa-user text-lg mr-3"></i> Users </a>
+            </nav>
         </div>
-        <!-- Contenu principal -->
+
+        <!-- Main Content -->
         <div class="content ml-auto">
-            <header class="flex justify-between items-center bg-white shadow-md px-4 py-1 header">
+            <header class="flex justify-between items-center bg-white shadow-md ml-6 px-4 py-1 header">
                 <!-- Barre de recherche globale -->
                 <div class="search-bar flex">
                     <button class="mr-2 text-gray-500">
@@ -194,9 +276,8 @@
                                 d="M4 6h16M4 12h16M4 18h16"></path>
                         </svg>
                     </button>
-                    <div class="focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all w-3/4 font-bold">
-                        Bienvenue dans l’espace client de Diallo Boutique
-                    </div>
+                    <input type="text" placeholder="Rechercher dans votre boutique..."
+                        class="focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all w-3/4" />
                 </div>
                 <!-- Informations utilisateur -->
                 <button class="header-user flex items-center" data-popover-target="popover-bottom"
@@ -221,6 +302,7 @@
                         class="block px-4 py-2 text-sm text-center text-gray-700 hover:bg-gray-100">DECONNEXION</a>
                 </div>
             </header>
+
             <main class="mt-8 mr-8 rounded-xl bg-white h-auto p-4 shadow-sm flex flex-col items-center">
                 <!-- User Info and Debt Summary -->
                 <div class="flex justify-between mb-6 w-full">
@@ -255,7 +337,9 @@
                         class="px-6 py-2 border-2 border-gray-300 bg-white text-gray-800 font-semibold rounded-md">Articles</button>
                     <button class="px-6 py-2 bg-blue-800 text-white font-semibold rounded-md">Paiements</button>
                 </div>
+               
                 <div class="flex justify-between gap-4 mb-6 w-full">
+                    
                     <!-- Table -->
                     <div class="bg-white rounded-lg shadow p-4 w-2/4">
                         <table class="w-full text-center">
@@ -306,6 +390,10 @@
                         </div>
                     </div>
                     <div class="bg-white rounded-lg shadow p-4 w-1/4">
+                        <div class="flex mb-4">
+                            <input type="text" placeholder="Libelle" class="border rounded px-4 py-2 mr-2">
+                            <button class="bg-blue-500 text-white px-4 py-2 rounded">OK</button>
+                        </div>
                         <table class="w-full">
                             <thead class="bg-blue-800 text-white">
                                 <tr>
@@ -352,6 +440,7 @@
             </main>
         </div>
     </div>
+
 </body>
 
 </html>

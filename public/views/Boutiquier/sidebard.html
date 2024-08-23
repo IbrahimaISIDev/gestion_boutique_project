@@ -255,12 +255,12 @@ input.input-shadow:focus {
                 </div>
             </div>
             <nav class="flex-grow">
-                <a href="#" class="flex items-center px-4 py-2 hover:bg-blue-700"><i class="fas fa-tachometer-alt mr-3"></i> Dashboard</a>
-                <a href="#" class="flex items-center px-4 py-2 hover:bg-blue-700"><i class="fas fa-dollar-sign mr-3"></i> Dettes</a>
-                <a href="#" class="flex items-center px-4 py-2 hover:bg-blue-700"><i class="fas fa-users mr-3"></i> Clients</a>
-                <a href="#" class="flex items-center px-4 py-2 hover:bg-blue-700"><i class="fas fa-box mr-3"></i> Articles</a>
-                <a href="#" class="flex items-center px-4 py-2 hover:bg-blue-700"><i class="fas fa-envelope mr-3"></i> Demandes</a>
-                <a href="#" class="flex items-center px-4 py-2 hover:bg-blue-700"><i class="fas fa-user mr-3"></i> Utilisateurs</a>
+                <a href="../SuperAdmin/dashboard.html"><i class="fas fa-tachometer-alt text-lg mr-3"></i> Dashboard</a>
+            <a href="../Boutiquier/sidebard.html"><i class="fas fa-dollar-sign text-lg mr-3"></i> Dettes </a>
+            <a href="../Boutiquier/searchClient.html"><i class="fas fa-users text-lg mr-3"></i> Clients </a>
+            <a href="../Boutiquier/articles.html"><i class="fas fa-box text-lg mr-3"></i> Articles </a>
+            <a href="../Boutiquier/demandes.html"><i class="fas fa-envelope text-lg mr-3"></i> Demandes </a>
+            <a href="../SuperAdmin/users.html"><i class="fas fa-user text-lg mr-3"></i> Users </a>
             </nav>
         </div>
 
@@ -298,7 +298,7 @@ input.input-shadow:focus {
                         <p class="mt-2 font-semibold">OUSSEYNOU DIEDHIOU</p>
                     </div>
                     <a href="#" class="block px-4 py-2 text-sm text-center text-gray-700 hover:bg-gray-100">MODIFIER</a>
-                    <a href="#"
+                    <a href="../auth/login.html"
                         class="block px-4 py-2 text-sm text-center text-gray-700 hover:bg-gray-100">DECONNEXION</a>
                 </div>
             </header>
@@ -387,8 +387,8 @@ input.input-shadow:focus {
                 </form>
                 <div class="flex justify-center mb-4">
                     <button type="submit" class="font-bold btn bg-gray-600 text-white mr-20 py-2 px-4 rounded-md hover:bg-gray-700"><i class="fas fa-user mr-2"></i>Infos</button>
-                    <button type="submit" class="font-bold btn bg-blue-600 text-white mr-16 ml-2 py-2 px-4 rounded-md hover:bg-blue-700"><i class="fas fa-file-invoice-dollar mr-2"></i>Dettes</button>
-                    <button type="submit" class="font-bold btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"><i class="fas fa-plus mr-2"></i>Nouvelle</button>
+                    <button type="submit" class="font-bold btn bg-blue-600 text-white mr-16 ml-2 py-2 px-4 rounded-md hover:bg-blue-700"><i class="fas fa-file-invoice-dollar mr-2"></i><a href="../Boutiquier/listDettesClient.html">Dettes</a></button>
+                    <button type="submit" class="font-bold btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"><i class="fas fa-plus mr-2"></i><a href="../Boutiquier/nouvelleDette.html">Nouvelle</a></button>
                 </div>
 
                 <!-- Résultats de la recherche -->
@@ -432,7 +432,7 @@ input.input-shadow:focus {
             </main>
         </div>
     </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
     <script>
         // Toggle des champs de compte
         const creerCompteToggle = document.getElementById('creerCompte');
