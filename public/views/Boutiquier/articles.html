@@ -184,7 +184,6 @@
             <a href="#"><i class="fas fa-users text-lg mr-3"></i> Clients </a>
             <a href="#"><i class="fas fa-box text-lg mr-3"></i> Articles </a>
             <a href="#"><i class="fas fa-envelope text-lg mr-3"></i> Demandes </a>
-            <a href="#"><i class="fas fa-user text-lg mr-3"></i>Utilisateur </a>
         </div>
         <!-- Contenu principal -->
         <div class="content ml-auto">
@@ -224,74 +223,94 @@
                         class="block px-4 py-2 text-sm text-center text-gray-700 hover:bg-gray-100">DECONNEXION</a>
                 </div>
             </header>
-            <div class="container mx-auto p-6">
-    <h1 class="text-2xl font-bold mb-4">Dette > Details Dettes</h1>
-    
-    <div class="flex justify-between mb-6">
-        <!-- Informations du client -->
-        <div class="w-1/4 p-4 bg-gray-200 border border-black rounded-lg shadow-lg">            
-            <div class="flex flex-col justify-center space-y-4">
-                <div class="flex items-center space-x-8">
-                    <img src="https://via.placeholder.com/80" alt="User Photo" class="w-20 h-20 rounded-full">
-                    <div>
-                        <p class="font-bold">Prenom: Ibrahima Sory</p>
-                        <p class="font-bold">Nom: Diallo</p>
-                        <p class="font-bold">Tel: 785619115</p>
+            <main class="mt-8 mr-8 rounded-xl bg-white h-auto p-4 shadow-sm flex flex-col">
+                <div class="mb-4 flex justify-between">
+                    <span class="text-gray-600 text-xl font-bold">Approvisionnement</span>
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded">Nouvelle Article</button>
+                </div>
+                <div class="flex justify-between gap-4">
+                    <div class="bg-white rounded-lg shadow p-4 mb-4 w-1/2">
+                        <h2 class="text-2xl font-bold mb-4">Lister les produits</h2>
+                        <div class="mb-4">
+                            <button class="bg-red-500 text-white px-4 py-2">RUP</button>
+                            <button class="bg-gray-300 text-gray-700 px-4 py-2">DIS</button>
+                            <button class="bg-gray-300 text-gray-700 px-4 py-2">ALL</button>
+                        </div>
+                        <div class="flex mb-4">
+                            <input type="text" placeholder="Libelle" class="border rounded px-4 py-2 mr-2">
+                            <button class="bg-blue-500 text-white px-4 py-2 rounded">OK</button>
+                        </div>
+                        <table class="w-full">
+                            <thead>
+                                <tr class="bg-blue-500 text-white">
+                                    <th class="py-2 px-4 text-center">Cache</th>
+                                    <th class="py-2 px-4 text-center">Article</th>
+                                    <th class="py-2 px-4 text-center">Prix</th>
+                                    <th class="py-2 px-4 text-center">Qte en stock</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="py-2 px-4 text-center"></td>
+                                    <td class="py-2 px-4 text-center">Chocolat</td>
+                                    <td class="py-2 px-4 text-center">2000</td>
+                                    <td class="py-2 px-4 text-center">5</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="flex justify-center mt-4">
+                            <button class="px-3 py-1 border rounded mr-1">&lt;</button>
+                            <button class="px-3 py-1 border rounded mr-1 bg-blue-500 text-white">1</button>
+                            <button class="px-3 py-1 border rounded mr-1">2</button>
+                            <button class="px-3 py-1 border rounded">&gt;</button>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-4 w-1/2">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-xl font-bold">Liste de produits selectionné</h3>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block mb-2">Total:</label>
+                            <input type="text" class="border rounded px-4 py-2 w-full">
+                        </div>
+                        <table class="w-full">
+                            <thead>
+                                <tr class="bg-blue-500 text-white">
+                                    <th class="py-2 px-4 text-center">ARTICLE</th>
+                                    <th class="py-2 px-4 text-center">PRIX</th>
+                                    <th class="py-2 px-4 text-center">QUANTITÉ</th>
+                                    <th class="py-2 px-4 text-center">ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="py-2 px-4 text-center">24-07-2024</td>
+                                    <td class="py-2 px-4 text-center">20.000</td>
+                                    <td class="py-2 px-4 text-center">
+                                        <button class="px-2 py-1 border rounded">-</button>
+                                        <span class="mx-2">1</span>
+                                        <button class="px-2 py-1 border rounded">+</button>
+                                    </td>
+                                    <td class="py-2 px-4 text-center">
+                                        <button class="text-red-500">
+                                            <i class="fas fa-trash"></i> Supprimer
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="w-full h-12 flex justify-between">
+                            <div class="flex justify-center mt-4">
+                                <button class="px-3 py-1 border rounded mr-1">&lt;</button>
+                                <button class="px-3 py-1 border rounded mr-1 bg-blue-500 text-white">1</button>
+                                <button class="px-3 py-1 border rounded mr-1">2</button>
+                                <button class="px-3 py-1 border rounded">&gt;</button>
+                            </div>
+                            <button class="bg-blue-500 text-white px-3 rounded">SAVE</button>
+                        </div>
                     </div>
                 </div>
-                <p class="font-bold">Email: sorydiallo371@gmail.com</p>
-            </div>
-        </div>
-        
-        <div class="w-1/4 p-4 bg-gray-200 border border-black rounded-lg shadow-lg flex flex-col justify-evenly">
-            <p class="font-bold text-xl">Montant Total: 100 000 FCFA</p>
-            <p class="font-bold text-xl">Montant Versé: 55 000 FCFA</p>
-            <p class="font-bold text-xl">Montant Restant: 45 000 FCFA</p>
-        </div>
-    </div>
-
-    
-    <!-- Liste des dettes -->
-    <div class="bg-white rounded-lg shadow p-4">
-        <div class="flex justify-between items-center mb-4">
-            <h2 class="text-xl font-semibold">Liste des dettes</h2>
-            <div>
-                <button class="bg-red-500 text-white px-4 py-2 rounded mr-2">Non soldées</button>
-                <button class="bg-blue-500 text-white px-4 py-2 rounded">Soldées</button>
-            </div>
-        </div>
-        
-        <table class="w-full">
-            <thead class="bg-blue-500 text-white">
-                <tr>
-                    <th class="p-2 text-center">DATE</th>
-                    <th class="p-2 text-center">MONTANT</th>
-                    <th class="p-2 text-center">VERSER</th>
-                    <th class="p-2 text-center">RESTANT</th>
-                    <th class="p-2 text-center">ACTION</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="p-2 text-center">24-07-2024</td>
-                    <td class="p-2 text-center">100000 FCFA</td>
-                    <td class="p-2 text-center">55000 FCFA</td>
-                    <td class="p-2 text-center">45000 FCFA</td>
-                    <td class="p-2 text-center">
-                        <button class="bg-blue-500 text-white px-4 py-1 rounded">Details</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        
-        <div class="mt-4 flex justify-center">
-            <button class="px-2 py-1 border rounded mr-1">&lt;</button>
-            <button class="px-2 py-1 border rounded bg-blue-500 text-white mr-1">1</button>
-            <button class="px-2 py-1 border rounded mr-1">2</button>
-            <button class="px-2 py-1 border rounded">&gt;</button>
-        </div>
-    </div>
-</div>
+            </main>
         </div>
     </div>
 </body>
