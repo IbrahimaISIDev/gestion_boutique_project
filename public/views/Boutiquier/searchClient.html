@@ -184,6 +184,7 @@
             <a href="#"><i class="fas fa-users text-lg mr-3"></i> Clients </a>
             <a href="#"><i class="fas fa-box text-lg mr-3"></i> Articles </a>
             <a href="#"><i class="fas fa-envelope text-lg mr-3"></i> Demandes </a>
+            <a href="#"><i class="fas fa-user text-lg mr-3"></i> Utilisateurs </a>
         </div>
         <!-- Contenu principal -->
         <div class="content ml-auto">
@@ -223,8 +224,107 @@
                         class="block px-4 py-2 text-sm text-center text-gray-700 hover:bg-gray-100">DECONNEXION</a>
                 </div>
             </header>
-            <main class="mt-8 mr-8">
-            </main>
+            <div class="p-6 bg-gray-100 rounded-lg shadow-lg mt-8">
+                <!-- Header -->
+                <div class="mb-4 text-sm font-semibold text-gray-600">
+                    Clients > Lister Clients
+                </div>
+                
+                <!-- Filter and New Client Button -->
+                <div class="flex justify-between items-center mb-4">
+                    <!-- Filter by Phone -->
+                    <div class="flex items-center space-x-2">
+                        <input type="text" placeholder="Filtrer par Telephone" class="p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        <button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">OK</button>
+                    </div>
+                    <!-- New Client Button -->
+                    <button class="px-4 py-2 bg-blue-600 text-white rounded-md shadow hover:bg-blue-700">
+                        Nouvelle Client
+                    </button>
+                </div>
+                
+                <!-- Table -->
+                <div class="overflow-x-auto bg-white rounded-lg shadow">
+                    <table class="min-w-full">
+                        <thead class="bg-blue-600 text-white">
+                            <tr>
+                                <th class="px-6 py-3 text-left">PRENOM ET NOM</th>
+                                <th class="px-6 py-3 text-left">TELEPHONE</th>
+                                <th class="px-6 py-3 text-left">ADRESSE</th>
+                                <th class="px-6 py-3 text-left">MONTANT DUE</th>
+                                <th class="px-6 py-3 text-left">ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-700">
+                            <!-- Row 1 -->
+                            <tr class="border-t">
+                                <td class="px-6 py-4">Ibrahima Diallo</td>
+                                <td class="px-6 py-4">785619115</td>
+                                <td class="px-6 py-4">Dakar, Senegal</td>
+                                <td class="px-6 py-4">5000 FCFA</td>
+                                <td class="px-6 py-4">
+                                    <button class="px-4 py-2 bg-blue-500 text-white rounded-md shadow hover:bg-blue-600">
+                                        Details
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- Row 2 -->
+                            <tr class="border-t">
+                                <td class="px-6 py-4">Amina Ndiaye</td>
+                                <td class="px-6 py-4">785619115</td>
+                                <td class="px-6 py-4">Thiès, Senegal</td>
+                                <td class="px-6 py-4">15.000 FCFA</td>
+                                <td class="px-6 py-4">
+                                    <button class="px-4 py-2 bg-blue-500 text-white rounded-md shadow hover:bg-blue-600">
+                                        Details
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- Row 3 -->
+                            <tr class="border-t">
+                                <td class="px-6 py-4">Moussa Fall</td>
+                                <td class="px-6 py-4">785619115</td>
+                                <td class="px-6 py-4">Saint-Louis, Senegal</td>
+                                <td class="px-6 py-4">10.000 FCFA</td>
+                                <td class="px-6 py-4">
+                                    <button class="px-4 py-2 bg-blue-500 text-white rounded-md shadow hover:bg-blue-600">
+                                        Details
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- Row 4 -->
+                            <tr class="border-t">
+                                <td class="px-6 py-4">Fatou Diop</td>
+                                <td class="px-6 py-4">785619115</td>
+                                <td class="px-6 py-4">Kaolack, Senegal</td>
+                                <td class="px-6 py-4">10.000 FCFA</td>
+                                <td class="px-6 py-4">
+                                    <button class="px-4 py-2 bg-blue-500 text-white rounded-md shadow hover:bg-blue-600">
+                                        Details
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            
+                <!-- Pagination -->
+                <div class="mt-4 flex justify-end items-center space-x-2">
+                    <button class="px-3 py-1 bg-gray-300 rounded-md shadow hover:bg-gray-400">
+                        &lt;
+                    </button>
+                    <button class="px-3 py-1 bg-blue-500 text-white rounded-md shadow hover:bg-blue-600">
+                        1
+                    </button>
+                    <button class="px-3 py-1 bg-gray-300 rounded-md shadow hover:bg-gray-400">
+                        2
+                    </button>
+                    <button class="px-3 py-1 bg-gray-300 rounded-md shadow hover:bg-gray-400">
+                        &gt;
+                    </button>
+                </div>
+            </div>
+            
         </div>
     </div>
 </body>

@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Gestion de Boutique</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <style>
+
+      
+
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    background: linear-gradient(to right, #2b6cb0, #2d3748);
+    height: 100vh;
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    color: #ffffff;
+    font-size: 20px;
+    text-decoration: none;
+    transition: background-color 0.2s, padding-left 0.2s, z-index 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar a i {
+    font-size: 25px;
+}
+
+.sidebar a:hover {
+    background-color: #4a5568;
+    padding-left: 1.5rem;
+    z-index: 10;
+}
+
+.sidebar .active {
+    background-color: #4a5568;
+    margin-top: 10%;
+    font-weight: 600;
+}
+
+/* Content Styles */
+.content {
+    padding-left: 2rem;
+    background-color: #f7fafc;
+    width: calc(100% - 250px);
+    min-height: 100vh;
+}
+
+/* Header User Styles */
+.header-user {
+    position: relative;
+    width: 10%;
+    display: flex;
+    justify-content: end;
+}
+
+.header-user img {
+    position: absolute;
+    left: 0%;
+    border: 2px solid black;
+}
+
+.header-user div {
+    width: 70%;
+    right: 0%;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+/* Search Bar Styles */
+.search-bar {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-bar input {
+    border-radius: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 0.2rem 5rem;
+    width: 90%;
+    font-size: 25px;
+}
+
+/* Card Styles */
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+    font-size: 1.125rem;
+    color: #2d3748;
+    margin-left: 0.5rem;
+}
+
+.card p {
+    font-size: 2rem;
+    color: #2d3748;
+}
+
+.card .icon {
+    width: 2rem;
+    height: 2rem;
+    display: inline-block;
+}
+
+.card .icon+h3 {
+    margin-left: 0.5rem;
+}
+
+/* Header Styles */
+.header {
+    border-bottom-left-radius: 20px;
+    height: 10%;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 1rem;
+    text-align: left;
+}
+
+th {
+    background-color: #f7fafc;
+}
+
+tr:nth-child(even) {
+    background-color: #f1f5f9;
+}
+
+thead th {
+    background-color: #2b6cb0;
+    color: #ffffff;
+}
+
+/* Toggle Switch Styles */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e5e7eb;
+    border-radius: 9999px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    border-radius: 50%;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: transform 0.3s;
+}
+
+input:checked + .slider {
+    background-color: #34d399;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Input Focus Styles */
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="file"] {
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="email"]:focus,
+input[type="file"]:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+input.input-shadow {
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+input.input-shadow:focus {
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+}
+
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <div class="flex">
+        <!-- Sidebar -->
+        <div class="sidebar fixed top-0 left-0 h-screen w-64 flex flex-col text-white">
+            <div class="p-4 flex items-center h-32">
+                <svg class="w-12 h-12 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="24" height="24" rx="4" fill="white" />
+                    <path d="M17 8H7C5.89543 8 5 8.89543 5 10V16C5 17.1046 5.89543 18 7 18H17C18.1046 18 19 17.1046 19 16V10C19 8.89543 18.1046 8 17 8Z" stroke="#1E40AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M12 12C12.5523 12 13 11.5523 13 11C13 10.4477 12.5523 10 12 10C11.4477 10 11 10.4477 11 11C11 11.5523 11.4477 12 12 12Z" stroke="#1E40AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M16 16H8" stroke="#1E40AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <div class="flex flex-col">
+                    <span class="font-bold text-xl">GESTION</span>
+                    <span class="font-bold text-xl">BOUTIQUE</span>
+                </div>
+            </div>
+            <nav class="flex-grow">
+                <a href="#" class="flex items-center px-4 py-2 hover:bg-blue-700"><i class="fas fa-tachometer-alt mr-3"></i> Dashboard</a>
+                <a href="#" class="flex items-center px-4 py-2 hover:bg-blue-700"><i class="fas fa-dollar-sign mr-3"></i> Dettes</a>
+                <a href="#" class="flex items-center px-4 py-2 hover:bg-blue-700"><i class="fas fa-users mr-3"></i> Clients</a>
+                <a href="#" class="flex items-center px-4 py-2 hover:bg-blue-700"><i class="fas fa-box mr-3"></i> Articles</a>
+                <a href="#" class="flex items-center px-4 py-2 hover:bg-blue-700"><i class="fas fa-envelope mr-3"></i> Demandes</a>
+                <a href="#" class="flex items-center px-4 py-2 hover:bg-blue-700"><i class="fas fa-user mr-3"></i> Utilisateurs</a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content ml-auto">
+            <header class="flex justify-between items-center bg-white shadow-md ml-6 px-4 py-1 header">
+                <!-- Barre de recherche globale -->
+                <div class="search-bar flex">
+                    <button class="mr-2 text-gray-500">
+                        <svg class="w-12 h-12 font-bold" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                    <input type="text" placeholder="Rechercher dans votre boutique..."
+                        class="focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all w-3/4" />
+                </div>
+                <!-- Informations utilisateur -->
+                <button class="header-user flex items-center" data-popover-target="popover-bottom"
+                    data-popover-placement="bottom" type="button" data-popover-trigger="click">
+                    <img src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2" alt="Photo Utilisateur"
+                        class="w-16 h-16 rounded-full border-2 border-blue-500" />
+                    <div class="border-2 border-black pl-4 py-1">
+                        <p class="text-gray-700 text-sm font-semibold">OUSSEYNOU</p>
+                        <p class="text-gray-700 text-sm font-semibold">DIEDHIOU</p>
+                    </div>
+                </button>
+                <div data-popover id="popover-bottom" role="tooltip"
+                    class="absolute right-2 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 invisible"
+                    style="top: 3rem">
+                    <div class="px-4 py-2 text-center">
+                        <img class="w-16 h-16 rounded-full mx-auto"
+                            src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2" alt="User avatar" />
+                        <p class="mt-2 font-semibold">OUSSEYNOU DIEDHIOU</p>
+                    </div>
+                    <a href="#" class="block px-4 py-2 text-sm text-center text-gray-700 hover:bg-gray-100">MODIFIER</a>
+                    <a href="#"
+                        class="block px-4 py-2 text-sm text-center text-gray-700 hover:bg-gray-100">DECONNEXION</a>
+                </div>
+            </header>
+
+            <main class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Nouveau Client Section -->
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h2 class="text-2xl font-bold mb-6 text-blue-800"><i class="fas fa-user-plus mr-2"></i>Nouveau Client</h2>
+                <form method="POST" action="#" enctype="multipart/form-data" class="space-y-4">
+                    <div class="mb-4 flex items-center space-x-2">
+                        <label for="nom" class="w-1/6 flex-shrink-0 font-semibold text-gray-700 flex items-center"><i class="fas fa-user mr-2"></i>Nom</label>
+                        <input type="text" id="nom" name="nom" class="input-shadow flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="mb-4 flex items-center space-x-2">
+                        <label for="prenom" class="w-1/6 flex-shrink-0 font-semibold text-gray-700 flex items-center"><i class="fas fa-user mr-2"></i>Prénom</label>
+                        <input type="text" id="prenom" name="prenom" class="input-shadow flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="mb-4 flex items-center space-x-2">
+                        <label for="telephone" class="w-1/6 flex-shrink-0 font-semibold text-gray-700 flex items-center"><i class="fas fa-phone mr-2"></i>Téléphone</label>
+                        <input type="tel" id="telephone" name="telephone" class="input-shadow flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="mb-4 flex items-center space-x-2">
+                        <label for="adresse" class="w-1/6 flex-shrink-0 font-semibold text-gray-700 flex items-center"><i class="fas fa-map-marker-alt mr-2"></i>Adresse</label>
+                        <input type="text" id="adresse" name="adresse" class="input-shadow flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="mb-4 flex items-center space-x-2">
+                        <label for="genre" class="w-1/6 flex-shrink-0 font-semibold text-gray-700 flex items-center"><i class="fas fa-venus-mars mr-2"></i>Genre</label>
+                        <div class="flex-grow flex items-center">
+                            <label class="mr-4 flex items-center">
+                                <input type="radio" name="genre" value="Homme" class="mr-2">
+                                Homme
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="genre" value="Femme" class="mr-2">
+                                Femme
+                            </label>
+                        </div>
+                    </div>
+                    <div class="mb-4 flex items-center space-x-2">
+                        <label for="photo" class="w-1/6 flex-shrink-0 font-semibold text-gray-700 flex items-center"><i class="fas fa-camera mr-2"></i>Photo</label>
+                        <input type="file" id="photo" name="photo" class="input-shadow flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+
+                    <!-- Toggle pour Création de Compte -->
+                    <div class="mb-4 flex items-center">
+                        <span class="toggle-label mr-2">Créer un compte :</span>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="creerCompte" class="sr-only" onchange="toggleAccountFields()">
+                            <span class="slider"></span>
+                        </label>
+                        <span class="toggle-label ml-2 text-gray-700 font-semibold" id="toggleLabel">Non</span>
+                    </div>
+
+                    <!-- Champs Supplémentaires pour la Création de Compte -->
+                    <div id="accountFields" class="hidden">
+                        <!-- Champ Login -->
+                        <div class="mb-4 flex items-center space-x-2">
+                            <label for="login" class="w-1/6 flex-shrink-0 font-semibold text-gray-700 flex items-center"><i class="fas fa-envelope mr-2"></i>Login</label>
+                            <input type="text" id="login" name="login" class="input-shadow flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+
+                        <!-- Champ Password -->
+                        <div class="mb-2 flex items-center space-x-2">
+                            <label for="password" class="w-1/6 flex-shrink-0 font-semibold text-gray-700 flex items-center"><i class="fas fa-lock mr-2"></i>Password</label>
+                            <input type="password" id="password" name="password" class="input-shadow flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                    </div>
+
+                    <div class="flex justify-center">
+                        <button type="reset" class="btn font-bold bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 mr-12"><i class="fas fa-times mr-2"></i>Annuler</button>
+                        <button type="submit" class="btn font-bold bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow-md"><i class="fas fa-save mr-2"></i>Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+
+                    <!-- Suivi Dette Section -->
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h2 class="text-2xl font-bold mb-6 text-blue-800"><i class="fas fa-search-dollar mr-2"></i>Suivi de Dette</h2>
+                <form class="mb-4 flex gap-2" method="POST" action="#">
+                    <input type="hidden" name="action" value="searchClient">
+                    <label for="telephone" class="w-1/8 flex-shrink-0 font-semibold text-gray-700 flex items-center"><i class="fas fa-phone mr-2"></i>Tél :</label>
+                    <input type="tel" id="telephone" name="telephone" class="input-shadow flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    <!-- <input type="text" name="telephone" placeholder="Entrez le numéro de téléphone du client" class="flex-grow p-2 border border-gray-300 rounded-l-md focus:ring-blue-500 focus:border-blue-500"> -->
+                    <button type="submit" class="btn bg-blue-500 text-white p-2 rounded-r-md hover:bg-blue-600"><i class="fas fa-search mr-2"></i>OK</button>
+                </form>
+                <div class="flex justify-center mb-4">
+                    <button type="submit" class="font-bold btn bg-gray-600 text-white mr-20 py-2 px-4 rounded-md hover:bg-gray-700"><i class="fas fa-user mr-2"></i>Infos</button>
+                    <button type="submit" class="font-bold btn bg-blue-600 text-white mr-16 ml-2 py-2 px-4 rounded-md hover:bg-blue-700"><i class="fas fa-file-invoice-dollar mr-2"></i>Dettes</button>
+                    <button type="submit" class="font-bold btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"><i class="fas fa-plus mr-2"></i>Nouvelle</button>
+                </div>
+
+                <!-- Résultats de la recherche -->
+                <div class="flex justify-center mb-4">
+                    
+                    <div class="w-40 h-40 bg-gray-300 rounded-full overflow-hidden">
+                        <!-- Placeholder pour la photo du client -->
+                        <div class="w-full h-full flex items-center justify-center text-gray-500">
+                            <i class="fas fa-user-circle text-6xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <!-- Colonne des champs de saisie -->
+                    <div class="space-y-4 flex flex-col justify-between">
+                        <div class="mb-2 flex items-center space-x-2">
+                            <label for="nom" class="w-1/4 flex-shrink-0 font-semibold text-gray-700 flex items-center"><i class="fas fa-user mr-2"></i>Nom :</label>
+                            <input type="text" id="nom" name="nom" class="flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div class="mb-2 flex items-center space-x-2">
+                            <label for="prenom" class="w-1/4 flex-shrink-0 font-semibold text-gray-700 flex items-center"><i class="fas fa-user mr-2"></i>Prénom:</label>
+                            <input type="text" id="prenom" name="prenom" class="flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div class="mb-4 flex items-center space-x-2">
+                            <label for="adresse" class="w-1/4 flex-shrink-0 font-semibold text-gray-700 flex items-center"><i class="fas fa-map-marker-alt mr-2"></i>Adresse:</label>
+                            <input type="text" id="adresse" name="adresse" class="flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <!-- Ajoutez d'autres champs ici si nécessaire -->
+                    </div>
+                
+                    <!-- Espace pour afficher le code QR -->
+                    <div class="flex items-center justify-center">
+                        <div id="qr-code" class="w-48 h-40 border border-gray-300 flex items-center justify-center">
+                            <!-- Remplacez cette image par un vrai code QR -->
+                            <img src="/public/assets/images/Capture d’écran du 2024-08-21 12-52-39.png" alt="Code QR" class="w-full h-full object-contain">
+                        </div>
+                    </div>
+                </div>
+                
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Toggle des champs de compte
+        const creerCompteToggle = document.getElementById('creerCompte');
+        const accountFields = document.getElementById('accountFields');
+        const toggleLabel = document.getElementById('toggleLabel');
+
+        creerCompteToggle.addEventListener('change', function() {
+            if (this.checked) {
+                accountFields.classList.remove('hidden');
+                toggleLabel.textContent = 'Oui';
+            } else {
+                accountFields.classList.add('hidden');
+                toggleLabel.textContent = 'Non';
+            }
+        });
+
+        // Gestion du formulaire de nouveau client
+        document.getElementById('newClientForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Ici, vous ajouteriez la logique pour envoyer les données au serveur
+            console.log('Formulaire de nouveau client soumis');
+        });
+
+        // Gestion du formulaire de suivi de dette
+        document.getElementById('suiviDetteForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Ici, vous ajouteriez la logique pour rechercher le client
+            console.log('Recherche de client initiée');
+        });
+    </script>
+</body>
+
+</html>
