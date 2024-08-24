@@ -180,6 +180,52 @@
             background-color: #2b6cb0;
             color: #ffffff;
         }
+        /* Toggle Switch Styles */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #e5e7eb;
+    border-radius: 9999px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    border-radius: 50%;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: transform 0.3s;
+}
+
+input:checked + .slider {
+    background-color: #34d399;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
 
         @media (min-width: 768px) {
             .sidebar {
@@ -440,16 +486,15 @@
                                     class="input-shadow flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                             </div>
 
-                           <!-- Toggle pour Création de Compte -->
-                           <div class="mb-4 flex items-center">
-                            <span class="toggle-label mr-2">Créer un compte :</span>
-                            <label class="toggle-switch">
-                                <input type="checkbox" id="creerCompte" class="sr-only"
-                                    onchange="toggleAccountFields()">
-                                <span class="slider"></span>
-                            </label>
-                            <span class="toggle-label ml-2 text-gray-700 font-semibold" id="toggleLabel">Non</span>
-                        </div>
+                    <!-- Toggle pour Création de Compte -->
+                    <div class="mb-4 flex items-center">
+                        <span class="toggle-label mr-2">Créer un compte :</span>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="creerCompte" class="sr-only" onchange="toggleAccountFields()">
+                            <span class="slider"></span>
+                        </label>
+                        <span class="toggle-label ml-2 text-gray-700 font-semibold" id="toggleLabel">Non</span>
+                    </div>
 
                             <!-- Champs Supplémentaires pour la Création de Compte -->
                             <div id="accountFields" class="hidden">
@@ -560,6 +605,20 @@
     </div>
 
     <script>
+       // Toggle des champs de compte
+       const creerCompteToggle = document.getElementById('creerCompte');
+        const accountFields = document.getElementById('accountFields');
+        const toggleLabel = document.getElementById('toggleLabel');
+
+        creerCompteToggle.addEventListener('change', function() {
+            if (this.checked) {
+                accountFields.classList.remove('hidden');
+                toggleLabel.textContent = 'Oui';
+            } else {
+                accountFields.classList.add('hidden');
+                toggleLabel.textContent = 'Non';
+            }
+        });
         document.addEventListener("DOMContentLoaded", function () {
             const sidebar = document.getElementById("sidebar");
             const sidebarToggle = document.getElementById("sidebarToggle");
