@@ -499,7 +499,54 @@
             </main>
         </div>
     </div>
-
+    <!-- Modal -->
+    <div id="compteModal" tabindex="-1" aria-hidden="true"
+        class="fixed top-0 left-0 right-0 z-50 w-full p-4 hidden overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative w-full max-w-md max-h-full">
+            <div class="relative bg-white shadow-lg pt-10 px-6 pb-6 rounded-xl">
+                <button type="button"
+                    class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
+                    data-modal-hide="compteModal">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M10 8.586L15.707 2.879a1 1 0 111.414 1.414L11.414 10l5.707 5.707a1 1 0 01-1.414 1.414L10 11.414l-5.707 5.707a1 1 0 01-1.414-1.414L8.586 10 2.879 4.293a1 1 0 111.414-1.414L10 8.586z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                <h3 class="text-2xl font-semibold text-gray-900 mb-4">COMPTE</h3>
+                <div class="p-6 text-center border border-gray-200 rounded-2xl">
+                    <div class="flex justify-start gap-4 mb-6">
+                        <img src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2" alt="User Image"
+                            class="w-40 h-40 object-cover rounded-lg">
+                        <div class="text-left flex flex-col justify-between h-40 space-y-1">
+                            <p class="text-gray-700"><span class="font-semibold">Prénom:</span> ousseynou</p>
+                            <p class="text-gray-700"><span class="font-semibold">Nom:</span> diedhiou</p>
+                            <p class="text-gray-700"><span class="font-semibold">Tel:</span> 785304869</p>
+                            <p class="text-gray-700"><span class="font-semibold">Adresse:</span> Keur Massar</p>
+                        </div>
+                    </div>
+                    <form class="mt-8 space-y-4">
+                        <div>
+                            <label for="login" class="block text-left font-medium text-gray-700">Login</label>
+                            <input type="text" name="login" id="login" placeholder="Login"
+                                class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        </div>
+                        <div>
+                            <label for="password" class="block text-left font-medium text-gray-700">Password</label>
+                            <input type="password" name="password" id="password" placeholder="Password"
+                                class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        </div>
+                    </form>
+                    <div class="flex justify-between mt-8">
+                        <button data-modal-hide="compteModal"
+                            class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg transition duration-200">ANNULER</button>
+                        <button
+                            class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg transition duration-200">ENREGISTRER</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const sidebar = document.getElementById("sidebar");
