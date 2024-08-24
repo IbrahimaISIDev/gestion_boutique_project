@@ -6,7 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard - Gestion de Boutique</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
@@ -14,11 +21,21 @@
             font-family: "Poppins", sans-serif;
         }
 
-        /* Sidebar Styles */
         .sidebar {
             width: 250px;
             background: linear-gradient(to right, #2b6cb0, #2d3748);
             height: 100vh;
+            z-index: 1000;
+            /* Valeur élevée pour être au-dessus des autres éléments */
+            position: fixed;
+            top: 0;
+            left: -250px;
+            /* ou la largeur de votre sidebar */
+            transition: left 0.3s ease-in-out;
+        }
+
+        .sidebar.active {
+            left: 0;
         }
 
         .sidebar a {
@@ -26,14 +43,15 @@
             align-items: center;
             padding: 1rem;
             color: #ffffff;
-            font-size: 20px;
+            font-size: 16px;
             text-decoration: none;
             transition: background-color 0.2s, padding-left 0.2s, z-index 0.2s;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .sidebar a i {
-            font-size: 25px;
+            font-size: 20px;
+            margin-right: 10px;
         }
 
         .sidebar a:hover {
@@ -48,94 +66,106 @@
             font-weight: 600;
         }
 
-        /* Content Styles */
         .content {
-            padding-left: 2rem;
+            padding-left: 0;
             background-color: #f7fafc;
-            width: calc(100% - 250px);
+            width: 100%;
             min-height: 100vh;
+            transition: padding-left 0.3s ease-in-out;
+            position: relative;
+            z-index: 1;
+            /* Valeur inférieure à celle de la sidebar */
+            transition: margin-left 0.3s ease-in-out;
         }
 
-        /* Header User Styles */
+        .sidebar-active .content {
+            margin-left: 250px;
+            /* ou la largeur de votre sidebar */
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            /* Juste en dessous de la sidebar */
+            display: none;
+        }
+
+        .sidebar-active .overlay {
+            display: block;
+        }
+
         .header-user {
             position: relative;
-            width: 10%;
+            width: auto;
             display: flex;
-            justify-content: end;
+            justify-content: flex-end;
+            align-items: center;
         }
 
         .header-user img {
-            position: absolute;
-            left: 0%;
+            width: 40px;
+            height: 40px;
             border: 2px solid black;
+            border-radius: 50%;
         }
 
         .header-user div {
-            width: 70%;
-            right: 0%;
-            border-top-right-radius: 15px;
-            border-bottom-right-radius: 15px;
+            margin-left: 10px;
         }
 
-        /* Search Bar Styles */
         .search-bar {
-            width: 60%;
+            width: 100%;
+            max-width: 600px;
             display: flex;
             justify-content: space-between;
+            margin-bottom: 1rem;
         }
 
         .search-bar input {
             border-radius: 1rem;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-            padding: 0.2rem 5rem;
-            width: 90%;
-            font-size: 25px;
+            padding: 0.5rem 1rem;
+            width: 100%;
+            font-size: 16px;
         }
 
-        /* Card Styles */
         .card {
-            background-color: white;
-            border-radius: 8px;
+            background: #ffffff;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 0.375rem;
             padding: 1.5rem;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            text-align: center;
         }
 
         .card h3 {
             font-size: 1.125rem;
             color: #2d3748;
-            margin-left: 0.5rem;
+            margin-top: 0.5rem;
         }
 
         .card p {
-            font-size: 2rem;
+            font-size: 1.5rem;
             color: #2d3748;
         }
 
         .card .icon {
-            width: 2rem;
-            height: 2rem;
-            display: inline-block;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
         }
 
-        .card .icon+h3 {
-            margin-left: 0.5rem;
-        }
-
-        /* Header Styles */
         .header {
             border-bottom-left-radius: 20px;
-            height: 10%;
+            padding: 1rem;
         }
 
-        /* Table Styles */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -143,7 +173,7 @@
 
         th,
         td {
-            padding: 1rem;
+            padding: 0.75rem;
             text-align: left;
         }
 
@@ -160,87 +190,115 @@
             color: #ffffff;
         }
 
-        /* Toggle Switch Styles */
-        .toggle-switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
+        @media (min-width: 768px) {
+            .sidebar {
+                left: 0;
+            }
+
+            .content {
+                padding-left: 250px;
+            }
+
+            .header-user {
+                width: auto;
+            }
         }
 
-        .toggle-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
+        @media (max-width: 767px) {
+            .search-bar {
+                flex-direction: column;
+            }
+
+            .search-bar input {
+                margin-bottom: 1rem;
+            }
+
+            .card {
+                margin-bottom: 1rem;
+            }
         }
 
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #e5e7eb;
-            border-radius: 9999px;
-            transition: background-color 0.3s, box-shadow 0.3s;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .header {
+                border-bottom-left-radius: 20px;
+                height: 10%;
+            }
+
+            .search-bar {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+
+            .header-user {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .header-user img {
+                width: 40px;
+                height: 40px;
+            }
+
+            .header-user div {
+                font-size: 0.8rem;
+            }
         }
 
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            border-radius: 50%;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: transform 0.3s;
+        @media (max-width: 640px) {
+            .header-user {
+                width: 100%;
+                justify-content: center;
+            }
         }
 
-        input:checked+.slider {
-            background-color: #34d399;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .search-bar input {
+                font-size: 14px;
+            }
         }
 
-        input:checked+.slider:before {
-            transform: translateX(26px);
+        @media (max-width: 640px) {
+            .header {
+                padding: 1rem;
+            }
+
+            .search-bar {
+                order: 2;
+            }
+
+            .header-user {
+                order: 1;
+                margin-bottom: 1rem;
+            }
         }
 
-        /* Input Focus Styles */
-        input[type="text"],
-        input[type="tel"],
-        input[type="email"],
-        input[type="file"] {
-            transition: all 0.3s ease;
-        }
-
-        input[type="text"]:focus,
-        input[type="tel"]:focus,
-        input[type="email"]:focus,
-        input[type="file"]:focus {
-            border-color: #3b82f6;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-        }
-
-        input.input-shadow {
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        input.input-shadow:focus {
-            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+        @media (min-width: 641px) {
+            .search-bar input {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 
 <body class="bg-gray-100">
-    <div class="flex">
+    <div class="flex flex-col md:flex-row">
         <!-- Sidebar -->
-        <div class="sidebar fixed top-0 left-0 h-screen w-64 flex flex-col text-white">
+        <div class="sidebar" id="sidebar">
+            <button id="closeSidebar" class="absolute top-4 right-4 text-white hover:text-gray-300">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
             <div class="p-4 flex items-center h-32">
-                <svg class="w-12 h-12 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="24" height="24" rx="4" fill="white" />
+                <svg class="w-20 h-20 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="24" rx="4" fill="white" />
                     <path
                         d="M17 8H7C5.89543 8 5 8.89543 5 10V16C5 17.1046 5.89543 18 7 18H17C18.1046 18 19 17.1046 19 16V10C19 8.89543 18.1046 8 17 8Z"
                         stroke="#1E40AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -251,45 +309,63 @@
                         stroke-linejoin="round" />
                 </svg>
                 <div class="flex flex-col">
-                    <span class="font-bold text-xl">GESTION</span>
-                    <span class="font-bold text-xl">BOUTIQUE</span>
+                    <span class="text-white font-bold text-xl">GESTION</span>
+                    <span class="text-white font-bold text-xl">BOUTIQUE</span>
                 </div>
             </div>
-            <nav class="flex-grow">
-                <a href="../SuperAdmin/dashboard.html"><i class="fas fa-tachometer-alt text-lg mr-3"></i> Dashboard</a>
-                <a href="../Boutiquier/sidebard.html"><i class="fas fa-dollar-sign text-lg mr-3"></i> Dettes </a>
-                <a href="../Boutiquier/searchClient.html"><i class="fas fa-users text-lg mr-3"></i> Clients </a>
-                <a href="../Boutiquier/articles.html"><i class="fas fa-box text-lg mr-3"></i> Articles </a>
-                <a href="../Boutiquier/demandes.html"><i class="fas fa-envelope text-lg mr-3"></i> Demandes </a>
-                <a href="../SuperAdmin/users.html"><i class="fas fa-user text-lg mr-3"></i> Utilisateurs </a>
-            </nav>
+            <a class="block px-4 py-2 mt-2 text-sm font-semibold text-white hover:bg-gray-600"
+                href="../SuperAdmin/dashboard.html"><i class="fas fa-tachometer-alt text-lg mr-3"></i> Dashboard</a>
+            <a class="block px-4 py-2 mt-2 text-sm font-semibold text-white hover:bg-gray-600"
+                href="../Boutiquier/sidebard.html"><i class="fas fa-dollar-sign text-lg mr-3"></i> Dettes
+            </a>
+            <a class="block px-4 py-2 mt-2 text-sm font-semibold text-white hover:bg-gray-600"
+                href="../Boutiquier/searchClient.html"><i class="fas fa-users text-lg mr-3"></i> Clients
+            </a>
+            <a class="block px-4 py-2 mt-2 text-sm font-semibold text-white hover:bg-gray-600"
+                href="../Boutiquier/articles.html"><i class="fas fa-box text-lg mr-3"></i> Articles
+            </a>
+            <a class="block px-4 py-2 mt-2 text-sm font-semibold text-white hover:bg-gray-600"
+                href="../Boutiquier/demandes.html"><i class="fas fa-envelope text-lg mr-3"></i> Demandes
+            </a>
+            <a class="block px-4 py-2 mt-2 text-sm font-semibold text-white hover:bg-gray-600"
+                href="../SuperAdmin/users.html"><i class="fas fa-user text-lg mr-3"></i> Utilisateurs
+            </a>
         </div>
+        <div class="overlay" id="overlay"></div>
+        <!-- Contenu principal -->
+        <div class="content">
+            <header class="flex flex-col sm:flex-row justify-between items-center bg-white shadow-md px-4 py-2 header">
+                <!-- Bouton pour afficher/masquer la sidebar sur mobile -->
+                <button id="sidebarToggle" class="sm:hidden text-gray-500 mb-2 sm:mb-0">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
 
-        <!-- Main Content -->
-        <div class="content ml-auto">
-            <header class="flex justify-between items-center bg-white shadow-md ml-6 px-4 py-1 header">
                 <!-- Barre de recherche globale -->
-                <div class="search-bar flex">
-                    <button class="mr-2 text-gray-500">
-                        <svg class="w-12 h-12 font-bold" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
+                <div class="search-bar flex items-center w-full sm:w-1/2 lg:w-3/5 mb-2 sm:mb-0">
                     <input type="text" placeholder="Rechercher dans votre boutique..."
-                        class="focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all w-3/4" />
+                        class="w-full px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm sm:text-base" />
                 </div>
+
                 <!-- Informations utilisateur -->
-                <button class="header-user flex items-center" data-popover-target="popover-bottom"
+                <button class="header-user flex items-center mt-2 sm:mt-0" data-popover-target="popover-bottom"
                     data-popover-placement="bottom" type="button" data-popover-trigger="click">
                     <img src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2" alt="Photo Utilisateur"
-                        class="w-16 h-16 rounded-full border-2 border-blue-500" />
-                    <div class="border-2 border-black pl-4 py-1">
-                        <p class="text-gray-700 text-sm font-semibold">OUSSEYNOU</p>
-                        <p class="text-gray-700 text-sm font-semibold">DIEDHIOU</p>
+                        class="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-blue-500" />
+                    <div class="pl-2 sm:pl-4 py-1 ml-2">
+                        <p class="text-gray-700 text-xs sm:text-sm font-semibold">
+                            OUSSEYNOU
+                        </p>
+                        <p class="text-gray-700 text-xs sm:text-sm font-semibold">
+                            DIEDHIOU
+                        </p>
                     </div>
                 </button>
+
+                <!-- Popover pour les informations utilisateur (inchangé) -->
                 <div data-popover id="popover-bottom" role="tooltip"
                     class="absolute right-2 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 invisible"
                     style="top: 3rem">
@@ -298,13 +374,13 @@
                             src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2" alt="User avatar" />
                         <p class="mt-2 font-semibold">OUSSEYNOU DIEDHIOU</p>
                     </div>
-                    <a href="../Client/profile.html" class="block px-4 py-2 text-sm text-center text-gray-700 hover:bg-gray-100">MODIFIER</a>
-                    <a href="../auth/login.html"
+                    <a href="../Client/profile.html"
+                        class="block px-4 py-2 text-sm text-center text-gray-700 hover:bg-gray-100">MODIFIER</a>
+                    <a href="#"
                         class="block px-4 py-2 text-sm text-center text-gray-700 hover:bg-gray-100">DECONNEXION</a>
                 </div>
             </header>
-
-            <main class="p-6">
+            <main class="mt-8 mx-4 md:mr-8 rounded-xl bg-white p-4 shadow-sm flex flex-col">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Nouveau Client Section -->
                     <div class="bg-white rounded-lg shadow-md p-6">
@@ -484,38 +560,67 @@
                         </div>
 
                     </div>
+                </div>
             </main>
         </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+
     <script>
-        // Toggle des champs de compte
-        const creerCompteToggle = document.getElementById('creerCompte');
-        const accountFields = document.getElementById('accountFields');
-        const toggleLabel = document.getElementById('toggleLabel');
+        document.addEventListener("DOMContentLoaded", function () {
+            const sidebar = document.getElementById("sidebar");
+            const sidebarToggle = document.getElementById("sidebarToggle");
+            const content = document.querySelector(".content");
 
-        creerCompteToggle.addEventListener('change', function () {
-            if (this.checked) {
-                accountFields.classList.remove('hidden');
-                toggleLabel.textContent = 'Oui';
-            } else {
-                accountFields.classList.add('hidden');
-                toggleLabel.textContent = 'Non';
-            }
-        });
+            sidebarToggle.addEventListener("click", function () {
+                sidebar.classList.toggle("active");
+                content.classList.toggle("sidebar-open");
+            });
+            const closeSidebarBtn = document.getElementById("closeSidebar");
 
-        // Gestion du formulaire de nouveau client
-        document.getElementById('newClientForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            // Ici, vous ajouteriez la logique pour envoyer les données au serveur
-            console.log('Formulaire de nouveau client soumis');
-        });
+            closeSidebarBtn.addEventListener("click", () => {
+                sidebar.classList.remove("active");
+                document.body.classList.remove("sidebar-active");
+            });
 
-        // Gestion du formulaire de suivi de dette
-        document.getElementById('suiviDetteForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            // Ici, vous ajouteriez la logique pour rechercher le client
-            console.log('Recherche de client initiée');
+            // Fermer le sidebar si on clique en dehors
+            document.addEventListener("click", function (event) {
+                const isClickInsideSidebar = sidebar.contains(event.target);
+                const isClickInsideToggle = sidebarToggle.contains(event.target);
+                const sidebar = document.getElementById("sidebar");
+                const content = document.querySelector(".content");
+                const overlay = document.getElementById("overlay");
+                const toggleBtn = document.getElementById("sidebarToggle");
+
+                toggleBtn.addEventListener("click", () => {
+                    sidebar.classList.toggle("active");
+                    document.body.classList.toggle("sidebar-active");
+                });
+
+                overlay.addEventListener("click", () => {
+                    sidebar.classList.remove("active");
+                    document.body.classList.remove("sidebar-active");
+                });
+
+                if (
+                    !isClickInsideSidebar &&
+                    !isClickInsideToggle &&
+                    window.innerWidth < 768
+                ) {
+                    sidebar.classList.remove("active");
+                    content.classList.remove("sidebar-open");
+                }
+            });
+
+            // Ajuster le sidebar lors du redimensionnement de la fenêtre
+            window.addEventListener("resize", function () {
+                if (window.innerWidth >= 768) {
+                    sidebar.classList.add("active");
+                    content.classList.add("sidebar-open");
+                } else {
+                    sidebar.classList.remove("active");
+                    content.classList.remove("sidebar-open");
+                }
+            });
         });
     </script>
 </body>
