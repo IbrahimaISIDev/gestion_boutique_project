@@ -6,289 +6,338 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard - Gestion de Boutique</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
     <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+        body {
+            font-family: "Poppins", sans-serif;
+        }
 
-body {
-    font-family: "Poppins", sans-serif;
-}
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(to right, #2b6cb0, #2d3748);
+            height: 100vh;
+            z-index: 1000;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            transition: left 0.3s ease-in-out;
+        }
 
-/* Sidebar Styles */
-.sidebar {
-    width: 250px;
-    background: linear-gradient(to right, #2b6cb0, #2d3748);
-    height: 100vh;
-}
+        .sidebar.active {
+            left: 0;
+        }
 
-.sidebar a {
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    color: #ffffff;
-    font-size: 20px;
-    text-decoration: none;
-    transition: background-color 0.2s, padding-left 0.2s, z-index 0.2s;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+        .sidebar a {
+            padding: 1rem;
+            color: #ffffff;
+            font-size: 16px;
+            text-decoration: none;
+            transition: background-color 0.2s, padding-left 0.2s, z-index 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
 
-.sidebar a i {
-    font-size: 25px;
-}
+        .sidebar a i {
+            font-size: 20px;
+            margin-right: 10px;
+        }
 
-.sidebar a:hover {
-    background-color: #4a5568;
-    padding-left: 1.5rem;
-    z-index: 10;
-}
+        .sidebar a:hover {
+            background-color: #4a5568;
+            padding-left: 1.5rem;
+            z-index: 10;
+        }
 
-.sidebar .active {
-    background-color: #4a5568;
-    margin-top: 10%;
-    font-weight: 600;
-}
+        .sidebar .active {
+            background-color: #4a5568;
+            margin-top: 10%;
+            font-weight: 600;
+        }
 
-/* Content Styles */
-.content {
-    padding-left: 2rem;
-    background-color: #f7fafc;
-    width: calc(100% - 250px);
-    min-height: 100vh;
-}
+        .content {
+            padding-left: 0;
+            background-color: #f7fafc;
+            width: 100%;
+            min-height: 100vh;
+            transition: padding-left 0.3s ease-in-out;
+            position: relative;
+            z-index: 1;
+            transition: margin-left 0.3s ease-in-out;
+        }
 
-/* Header User Styles */
-.header-user {
-    position: relative;
-    width: 10%;
-    display: flex;
-    justify-content: end;
-}
+        .sidebar-active .content {
+            margin-left: 250px;
+        }
 
-.header-user img {
-    position: absolute;
-    left: 0%;
-    border: 2px solid black;
-}
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
 
-.header-user div {
-    width: 70%;
-    right: 0%;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-}
+        .sidebar-active .overlay {
+            display: block;
+        }
 
-/* Search Bar Styles */
-.search-bar {
-    width: 60%;
-    display: flex;
-    justify-content: space-between;
-}
+        .header-user {
+            position: relative;
+            width: auto;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
 
-.search-bar input {
-    border-radius: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    padding: 0.2rem 5rem;
-    width: 90%;
-    font-size: 25px;
-}
+        .header-user img {
+            width: 40px;
+            height: 40px;
+            border: 2px solid black;
+            border-radius: 50%;
+        }
 
-/* Card Styles */
-.card {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 1.5rem;
-    display: flex;
-    align-items: center;
-    transition: all 0.3s ease;
-}
+        .header-user div {
+            margin-left: 10px;
+        }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
+        .search-bar {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
 
-.card h3 {
-    font-size: 1.125rem;
-    color: #2d3748;
-    margin-left: 0.5rem;
-}
+        .search-bar input {
+            border-radius: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            padding: 0.5rem 1rem;
+            width: 100%;
+            font-size: 16px;
+        }
 
-.card p {
-    font-size: 2rem;
-    color: #2d3748;
-}
+        .header {
+            border-bottom-left-radius: 20px;
+            padding: 1rem;
+        }
 
-.card .icon {
-    width: 2rem;
-    height: 2rem;
-    display: inline-block;
-}
+        @media (min-width: 768px) {
+            .sidebar {
+                left: 0;
+            }
 
-.card .icon+h3 {
-    margin-left: 0.5rem;
-}
+            .content {
+                padding-left: 250px;
+            }
 
-/* Header Styles */
-.header {
-    border-bottom-left-radius: 20px;
-    height: 10%;
-}
+            .header-user {
+                width: auto;
+            }
+        }
 
-/* Table Styles */
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
+        @media (max-width: 767px) {
+            .search-bar {
+                flex-direction: column;
+            }
 
-th,
-td {
-    padding: 1rem;
-    text-align: left;
-}
+            .search-bar input {
+                margin-bottom: 1rem;
+            }
+        }
 
-th {
-    background-color: #f7fafc;
-}
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                align-items: stretch;
+            }
 
-tr:nth-child(even) {
-    background-color: #f1f5f9;
-}
+            .header {
+                border-bottom-left-radius: 20px;
+                height: 10%;
+            }
 
-thead th {
-    background-color: #2b6cb0;
-    color: #ffffff;
-}
+            .search-bar {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
 
-/* Toggle Switch Styles */
-.toggle-switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-}
+            .header-user {
+                width: 100%;
+                justify-content: center;
+            }
 
-.toggle-switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
+            .header-user img {
+                width: 40px;
+                height: 40px;
+            }
 
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #e5e7eb;
-    border-radius: 9999px;
-    transition: background-color 0.3s, box-shadow 0.3s;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
+            .header-user div {
+                font-size: 0.8rem;
+            }
+        }
 
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    border-radius: 50%;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: transform 0.3s;
-}
+        @media (max-width: 640px) {
+            .header-user {
+                width: 100%;
+                justify-content: center;
+            }
+        }
 
-input:checked + .slider {
-    background-color: #34d399;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .search-bar input {
+                font-size: 14px;
+            }
+        }
 
-input:checked + .slider:before {
-    transform: translateX(26px);
-}
+        @media (max-width: 640px) {
+            .header {
+                padding: 1rem;
+            }
 
-/* Input Focus Styles */
-input[type="text"],
-input[type="tel"],
-input[type="email"],
-input[type="file"] {
-    transition: all 0.3s ease;
-}
+            .search-bar {
+                order: 2;
+            }
 
-input[type="text"]:focus,
-input[type="tel"]:focus,
-input[type="email"]:focus,
-input[type="file"]:focus {
-    border-color: #3b82f6;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-}
+            .header-user {
+                order: 1;
+                margin-bottom: 1rem;
+            }
+        }
 
-input.input-shadow {
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
-}
+        @media (min-width: 641px) {
+            .search-bar input {
+                font-size: 14px;
+            }
+        }
 
-input.input-shadow:focus {
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
-}
+        @media (max-width: 768px) {
+            .content {
+                padding-left: 0;
+            }
 
+            main {
+                margin: 1rem;
+            }
+
+            .flex-col,
+            .flex-row {
+                flex-direction: column;
+            }
+
+            table {
+                font-size: 0.8rem;
+            }
+
+            th,
+            td {
+                padding: 0.5rem 0.25rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .search-bar {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+
+            .header-user {
+                width: 100%;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 
 <body class="bg-gray-100">
-    <div class="flex">
+    <div class="flex flex-col md:flex-row">
         <!-- Sidebar -->
-        <div class="sidebar fixed top-0 left-0 h-screen w-64 flex flex-col text-white">
+        <div class="sidebar" id="sidebar">
+            <button id="closeSidebar" class="absolute top-4 right-4 text-white hover:text-gray-300">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
             <div class="p-4 flex items-center h-32">
-                <svg class="w-12 h-12 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="24" height="24" rx="4" fill="white" />
-                    <path d="M17 8H7C5.89543 8 5 8.89543 5 10V16C5 17.1046 5.89543 18 7 18H17C18.1046 18 19 17.1046 19 16V10C19 8.89543 18.1046 8 17 8Z" stroke="#1E40AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M12 12C12.5523 12 13 11.5523 13 11C13 10.4477 12.5523 10 12 10C11.4477 10 11 10.4477 11 11C11 11.5523 11.4477 12 12 12Z" stroke="#1E40AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M16 16H8" stroke="#1E40AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <svg class="w-20 h-20 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="24" rx="4" fill="white" />
+                    <path
+                        d="M17 8H7C5.89543 8 5 8.89543 5 10V16C5 17.1046 5.89543 18 7 18H17C18.1046 18 19 17.1046 19 16V10C19 8.89543 18.1046 8 17 8Z"
+                        stroke="#1E40AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path
+                        d="M12 12C12.5523 12 13 11.5523 13 11C13 10.4477 12.5523 10 12 10C11.4477 10 11 10.4477 11 11C11 11.5523 11.4477 12 12 12Z"
+                        stroke="#1E40AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M16 16H8" stroke="#1E40AF" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
                 </svg>
                 <div class="flex flex-col">
-                    <span class="font-bold text-xl">GESTION</span>
-                    <span class="font-bold text-xl">BOUTIQUE</span>
+                    <span class="text-white font-bold text-xl">GESTION</span>
+                    <span class="text-white font-bold text-xl">BOUTIQUE</span>
                 </div>
             </div>
-            <nav class="flex-grow">
-                <a href="../SuperAdmin/dashboard.html"><i class="fas fa-tachometer-alt text-lg mr-3"></i> Dashboard</a>
-            <a href="../Boutiquier/sidebard.html"><i class="fas fa-dollar-sign text-lg mr-3"></i> Dettes </a>
-            <a href="../Boutiquier/searchClient.html"><i class="fas fa-users text-lg mr-3"></i> Clients </a>
-            <a href="../Boutiquier/articles.html"><i class="fas fa-box text-lg mr-3"></i> Articles </a>
-            <a href="../Boutiquier/demandes.html"><i class="fas fa-envelope text-lg mr-3"></i> Demandes </a>
-            <a href="../SuperAdmin/users.html"><i class="fas fa-user text-lg mr-3"></i> Utilisateurs </a>
-            </nav>
+            <a class="block px-4 py-2 mt-2 text-sm font-semibold text-white hover:bg-gray-600" href="../SuperAdmin/dashboard.html"><i class="fas fa-tachometer-alt text-lg mr-3"></i> Dashboard</a>
+            <a class="block px-4 py-2 mt-2 text-sm font-semibold text-white hover:bg-gray-600" href="../Boutiquier/sidebard.html"><i class="fas fa-dollar-sign text-lg mr-3"></i> Dettes
+            </a>
+            <a class="block px-4 py-2 mt-2 text-sm font-semibold text-white hover:bg-gray-600" href="../Boutiquier/searchClient.html"><i class="fas fa-users text-lg mr-3"></i> Clients
+            </a>
+            <a class="block px-4 py-2 mt-2 text-sm font-semibold text-white hover:bg-gray-600" href="../Boutiquier/articles.html"><i class="fas fa-box text-lg mr-3"></i> Articles
+            </a>
+            <a class="block px-4 py-2 mt-2 text-sm font-semibold text-white hover:bg-gray-600" href="../Boutiquier/demandes.html"><i class="fas fa-envelope text-lg mr-3"></i> Demandes
+            </a>
+            <a class="block px-4 py-2 mt-2 text-sm font-semibold text-white hover:bg-gray-600" href="../SuperAdmin/users.html"><i class="fas fa-user text-lg mr-3"></i> Utilisateurs
+            </a>
         </div>
+        <div class="overlay" id="overlay"></div>
+        <!-- Contenu principal -->
+        <div class="content">
+            <header class="flex flex-col sm:flex-row justify-between items-center bg-white shadow-md px-4 py-2 header">
+                <!-- Bouton pour afficher/masquer la sidebar sur mobile -->
+                <button id="sidebarToggle" class="sm:hidden text-gray-500 mb-2 sm:mb-0">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
 
-        <!-- Main Content -->
-        <div class="content ml-auto">
-            <header class="flex justify-between items-center bg-white shadow-md ml-6 px-4 py-1 header">
                 <!-- Barre de recherche globale -->
-                <div class="search-bar flex">
-                    <button class="mr-2 text-gray-500">
-                        <svg class="w-12 h-12 font-bold" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
+                <div class="search-bar flex items-center w-full sm:w-1/2 lg:w-3/5 mb-2 sm:mb-0">
                     <input type="text" placeholder="Rechercher dans votre boutique..."
-                        class="focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all w-3/4" />
+                        class="w-full px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-sm sm:text-base" />
                 </div>
+
                 <!-- Informations utilisateur -->
-                <button class="header-user flex items-center" data-popover-target="popover-bottom"
+                <button class="header-user flex items-center mt-2 sm:mt-0" data-popover-target="popover-bottom"
                     data-popover-placement="bottom" type="button" data-popover-trigger="click">
                     <img src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2" alt="Photo Utilisateur"
-                        class="w-16 h-16 rounded-full border-2 border-blue-500" />
-                    <div class="border-2 border-black pl-4 py-1">
-                        <p class="text-gray-700 text-sm font-semibold">OUSSEYNOU</p>
-                        <p class="text-gray-700 text-sm font-semibold">DIEDHIOU</p>
+                        class="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-blue-500" />
+                    <div class="pl-2 sm:pl-4 py-1 ml-2">
+                        <p class="text-gray-700 text-xs sm:text-sm font-semibold">
+                            OUSSEYNOU
+                        </p>
+                        <p class="text-gray-700 text-xs sm:text-sm font-semibold">
+                            DIEDHIOU
+                        </p>
                     </div>
                 </button>
+
+                <!-- Popover pour les informations utilisateur -->
                 <div data-popover id="popover-bottom" role="tooltip"
                     class="absolute right-2 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 invisible"
                     style="top: 3rem">
@@ -297,17 +346,18 @@ input.input-shadow:focus {
                             src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2" alt="User avatar" />
                         <p class="mt-2 font-semibold">OUSSEYNOU DIEDHIOU</p>
                     </div>
-                    <a href="../Client/profile.html" class="block px-4 py-2 text-sm text-center text-gray-700 hover:bg-gray-100">MODIFIER</a>
-                    <a href="../auth/login.html"
+                    <a href="../Client/profile.html"
+                        class="block px-4 py-2 text-sm text-center text-gray-700 hover:bg-gray-100">MODIFIER</a>
+                    <a href="#"
                         class="block px-4 py-2 text-sm text-center text-gray-700 hover:bg-gray-100">DECONNEXION</a>
                 </div>
             </header>
-
-            <main class="mt-8 mr-8 rounded-xl bg-white h-auto p-4 shadow-sm flex flex-col items-center">
+            <main class="mt-8 mx-4 md:mr-8 rounded-xl bg-white p-4 shadow-sm flex flex-col">
                 <!-- User Info and Debt Summary -->
-                <div class="flex justify-between mb-6 w-full">
+                <div class="flex flex-col md:flex-row justify-between mb-6 w-full">
                     <!-- User Info -->
-                    <div class="w-1/4 p-4 bg-gray-200 border border-black rounded-lg shadow-lg">
+                    <div
+                        class="w-full md:w-1/2 lg:w-1/4 p-4 bg-gray-200 border border-black rounded-lg shadow-lg mb-4 md:mb-0">
                         <div class="flex flex-col justify-center space-y-4">
                             <div class="flex items-center space-x-8">
                                 <img src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2" alt="User Photo"
@@ -324,7 +374,7 @@ input.input-shadow:focus {
 
                     <!-- Debt Summary -->
                     <div
-                        class="w-1/4 p-4 bg-gray-200 border border-black rounded-lg shadow-lg flex flex-col justify-evenly">
+                        class="w-full md:w-1/2 lg:w-1/4 p-4 bg-gray-200 border border-black rounded-lg shadow-lg flex flex-col justify-evenly">
                         <p class="font-bold text-xl">Montant Total: 100 000 FCFA</p>
                         <p class="font-bold text-xl">Montant Versé: 55 000 FCFA</p>
                         <p class="font-bold text-xl">Montant Restant: 45 000 FCFA</p>
@@ -337,11 +387,10 @@ input.input-shadow:focus {
                         class="px-6 py-2 border-2 border-gray-300 bg-white text-gray-800 font-semibold rounded-md">Articles</button>
                     <button class="px-6 py-2 bg-blue-800 text-white font-semibold rounded-md">Paiements</button>
                 </div>
-               
-                <div class="flex justify-between gap-4 mb-6 w-full">
-                    
+
+                <div class="flex flex-col lg:flex-row justify-between gap-4 mb-6 w-full">
                     <!-- Table -->
-                    <div class="bg-white rounded-lg shadow p-4 w-2/4">
+                    <div class="bg-white rounded-lg shadow p-4 w-full lg:w-2/3">
                         <table class="w-full text-center">
                             <thead class="bg-blue-700 text-white">
                                 <tr>
@@ -381,15 +430,15 @@ input.input-shadow:focus {
                             </button>
                             <button
                                 class="bg-blue-600 text-white py-1 px-3 hover:bg-blue-700 focus:outline-none">1</button>
-                                <button
+                            <button
                                 class="bg-blue-600 text-white py-1 px-3 hover:bg-blue-700 focus:outline-none">2</button>
-                                <button
+                            <button
                                 class="bg-gray-200 text-gray-600 py-1 px-3 rounded-r-md hover:bg-gray-300 focus:outline-none">
                                 &gt;
                             </button>
                         </div>
                     </div>
-                    <div class="bg-white rounded-lg shadow p-4 w-1/4">
+                    <div class="bg-white rounded-lg shadow p-4 w-full lg:w-1/3 mt-4 lg:mt-0">
                         <div class="flex mb-4">
                             <input type="text" placeholder="Libelle" class="border rounded px-4 py-2 mr-2">
                             <button class="bg-blue-500 text-white px-4 py-2 rounded">OK</button>
@@ -441,6 +490,48 @@ input.input-shadow:focus {
         </div>
     </div>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const sidebar = document.getElementById("sidebar");
+            const sidebarToggle = document.getElementById("sidebarToggle");
+            const content = document.querySelector(".content");
+
+            sidebarToggle.addEventListener("click", function () {
+                sidebar.classList.toggle("active");
+                content.classList.toggle("sidebar-open");
+            });
+            const closeSidebarBtn = document.getElementById("closeSidebar");
+
+            closeSidebarBtn.addEventListener("click", () => {
+                sidebar.classList.remove("active");
+                document.body.classList.remove("sidebar-active");
+            });
+
+            // Fermer le sidebar si on clique en dehors
+            document.addEventListener("click", function (event) {
+                const isClickInsideSidebar = sidebar.contains(event.target);
+                const isClickInsideToggle = sidebarToggle.contains(event.target);
+                const overlay = document.getElementById("overlay");
+
+                if (!isClickInsideSidebar && !isClickInsideToggle && window.innerWidth < 768) {
+                    sidebar.classList.remove("active");
+                    content.classList.remove("sidebar-open");
+                    document.body.classList.remove("sidebar-active");
+                }
+            });
+
+            // Ajuster le sidebar lors du redimensionnement de la fenêtre
+            window.addEventListener("resize", function () {
+                if (window.innerWidth >= 768) {
+                    sidebar.classList.add("active");
+                    content.classList.add("sidebar-open");
+                } else {
+                    sidebar.classList.remove("active");
+                    content.classList.remove("sidebar-open");
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
