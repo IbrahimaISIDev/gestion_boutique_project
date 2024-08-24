@@ -26,11 +26,9 @@
             background: linear-gradient(to right, #2b6cb0, #2d3748);
             height: 100vh;
             z-index: 1000;
-            /* Valeur élevée pour être au-dessus des autres éléments */
             position: fixed;
             top: 0;
             left: -250px;
-            /* ou la largeur de votre sidebar */
             transition: left 0.3s ease-in-out;
         }
 
@@ -45,7 +43,7 @@
             color: #ffffff;
             font-size: 16px;
             text-decoration: none;
-            transition: background-color 0.2s, padding-left 0.2s, z-index 0.2s;
+            transition: background-color 0.2s, padding-left 0.2s;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
@@ -57,7 +55,6 @@
         .sidebar a:hover {
             background-color: #4a5568;
             padding-left: 1.5rem;
-            z-index: 10;
         }
 
         .sidebar .active {
@@ -71,16 +68,11 @@
             background-color: #f7fafc;
             width: 100%;
             min-height: 100vh;
-            transition: padding-left 0.3s ease-in-out;
-            position: relative;
-            z-index: 1;
-            /* Valeur inférieure à celle de la sidebar */
             transition: margin-left 0.3s ease-in-out;
         }
 
         .sidebar-active .content {
             margin-left: 250px;
-            /* ou la largeur de votre sidebar */
         }
 
         .overlay {
@@ -91,7 +83,6 @@
             bottom: 0;
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 999;
-            /* Juste en dessous de la sidebar */
             display: none;
         }
 
@@ -226,7 +217,7 @@
 
             .header {
                 border-bottom-left-radius: 20px;
-                height: 10%;
+                height: auto;
             }
 
             .search-bar {
@@ -282,6 +273,20 @@
                 font-size: 14px;
             }
         }
+
+        @media (max-width: 640px) {
+        .form-row {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        .form-row label {
+            width: 100%;
+            margin-bottom: 0.5rem;
+        }
+        .form-row input, .form-row select {
+            width: 100%;
+        }
+    }
     </style>
 </head>
 
@@ -380,42 +385,39 @@
                         class="block px-4 py-2 text-sm text-center text-gray-700 hover:bg-gray-100">DECONNEXION</a>
                 </div>
             </header>
-            <main class="mt-8 mx-4 md:mr-8 rounded-xl bg-white p-4 shadow-sm flex flex-col">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <main class="mt-8 mx-4 md:mx-8 rounded-xl bg-white p-4 shadow-sm">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <!-- Nouveau Client Section -->
                     <div class="bg-white rounded-lg shadow-md p-6">
                         <h2 class="text-2xl font-bold mb-6 text-blue-800"><i class="fas fa-user-plus mr-2"></i>Nouveau
                             Client</h2>
-                        <form method="POST" action="#" enctype="multipart/form-data" class="space-y-4">
-                            <div class="mb-4 flex items-center space-x-2">
-                                <label for="nom"
-                                    class="w-1/6 flex-shrink-0 font-semibold text-gray-700 flex items-center"><i
-                                        class="fas fa-user mr-2"></i>Nom</label>
-                                <input type="text" id="nom" name="nom"
-                                    class="input-shadow flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                            </div>
-                            <div class="mb-4 flex items-center space-x-2">
-                                <label for="prenom"
-                                    class="w-1/6 flex-shrink-0 font-semibold text-gray-700 flex items-center"><i
-                                        class="fas fa-user mr-2"></i>Prénom</label>
+                            <form method="POST" action="#" enctype="multipart/form-data" class="space-y-4">
+                                <div class="form-row mb-4 flex items-center space-x-2">
+                                    <label for="nom" class="w-full sm:w-1/6 flex-shrink-0 font-semibold text-gray-700 flex items-center">
+                                        <i class="fas fa-user mr-2"></i>Nom
+                                    </label>
+                                    <input type="text" id="nom" name="nom" class="input-shadow flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                </div>
+                                <div class="form-row mb-4 flex items-center space-x-2">
+                                    <label for="prenom" class="w-full sm:w-1/6 flex-shrink-0 font-semibold text-gray-700 flex items-center">                                        <i class="fas fa-user mr-2"></i>Prénom</label>
                                 <input type="text" id="prenom" name="prenom"
                                     class="input-shadow flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                             </div>
-                            <div class="mb-4 flex items-center space-x-2">
+                            <div class="form-row mb-4 flex items-center space-x-2">
                                 <label for="telephone"
                                     class="w-1/6 flex-shrink-0 font-semibold text-gray-700 flex items-center"><i
                                         class="fas fa-phone mr-2"></i>Téléphone</label>
                                 <input type="tel" id="telephone" name="telephone"
                                     class="input-shadow flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                             </div>
-                            <div class="mb-4 flex items-center space-x-2">
+                            <div class="form-row mb-4 flex items-center space-x-2">
                                 <label for="adresse"
                                     class="w-1/6 flex-shrink-0 font-semibold text-gray-700 flex items-center"><i
                                         class="fas fa-map-marker-alt mr-2"></i>Adresse</label>
                                 <input type="text" id="adresse" name="adresse"
                                     class="input-shadow flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                             </div>
-                            <div class="mb-4 flex items-center space-x-2">
+                            <div class="form-row mb-4 flex items-center space-x-2">
                                 <label for="genre"
                                     class="w-1/6 flex-shrink-0 font-semibold text-gray-700 flex items-center"><i
                                         class="fas fa-venus-mars mr-2"></i>Genre</label>
@@ -430,7 +432,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="mb-4 flex items-center space-x-2">
+                            <div class="form-row mb-4 flex items-center space-x-2">
                                 <label for="photo"
                                     class="w-1/6 flex-shrink-0 font-semibold text-gray-700 flex items-center"><i
                                         class="fas fa-camera mr-2"></i>Photo</label>
@@ -452,7 +454,7 @@
                             <!-- Champs Supplémentaires pour la Création de Compte -->
                             <div id="accountFields" class="hidden">
                                 <!-- Champ Login -->
-                                <div class="mb-4 flex items-center space-x-2">
+                                <div class="form-row mb-4 flex items-center space-x-2">
                                     <label for="login"
                                         class="w-1/6 flex-shrink-0 font-semibold text-gray-700 flex items-center"><i
                                             class="fas fa-envelope mr-2"></i>Login</label>
@@ -461,7 +463,7 @@
                                 </div>
 
                                 <!-- Champ Password -->
-                                <div class="mb-2 flex items-center space-x-2">
+                                <div class="form-row mb-2 flex items-center space-x-2">
                                     <label for="password"
                                         class="w-1/6 flex-shrink-0 font-semibold text-gray-700 flex items-center"><i
                                             class="fas fa-lock mr-2"></i>Password</label>
@@ -485,32 +487,27 @@
                     <div class="bg-white rounded-lg shadow-md p-6">
                         <h2 class="text-2xl font-bold mb-6 text-blue-800"><i class="fas fa-search-dollar mr-2"></i>Suivi
                             de Dette</h2>
-                        <form class="mb-4 flex gap-2" method="POST" action="#">
-                            <input type="hidden" name="action" value="searchClient">
-                            <label for="telephone"
-                                class="w-1/8 flex-shrink-0 font-semibold text-gray-700 flex items-center"><i
-                                    class="fas fa-phone mr-2"></i>Tél :</label>
-                            <input type="tel" id="telephone" name="telephone"
-                                class="input-shadow flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                            <!-- <input type="text" name="telephone" placeholder="Entrez le numéro de téléphone du client" class="flex-grow p-2 border border-gray-300 rounded-l-md focus:ring-blue-500 focus:border-blue-500"> -->
-                            <button type="submit"
-                                class="btn bg-blue-500 text-white p-2 rounded-r-md hover:bg-blue-600"><i
-                                    class="fas fa-search mr-2"></i>OK</button>
-                        </form>
-                        <div class="flex justify-center mb-4">
-                            <button type="submit"
-                                class="font-bold btn bg-gray-600 text-white mr-20 py-2 px-4 rounded-md hover:bg-gray-700"><i
-                                    class="fas fa-user mr-2"></i>Infos</button>
-                            <button type="submit"
-                                class="font-bold btn bg-blue-600 text-white mr-16 ml-2 py-2 px-4 rounded-md hover:bg-blue-700"><i
-                                    class="fas fa-file-invoice-dollar mr-2"></i><a
-                                    href="../Boutiquier/listDettesClient.html">Dettes</a></button>
-                            <button type="submit"
-                                class="font-bold btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700"><i
-                                    class="fas fa-plus mr-2"></i><a
-                                    href="../Boutiquier/nouvelleDette.html">Nouvelle</a></button>
-                        </div>
-
+                            <form class="mb-4 flex flex-wrap gap-2" method="POST" action="#">
+                                <input type="hidden" name="action" value="searchClient">
+                                <label for="telephone" class="w-full sm:w-auto flex-shrink-0 font-semibold text-gray-700 flex items-center">
+                                    <i class="fas fa-phone mr-2"></i>Tél :
+                                </label>
+                                <input type="tel" id="telephone" name="telephone" class="flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                <button type="submit" class="w-full sm:w-auto btn bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600">
+                                    <i class="fas fa-search mr-2"></i>OK
+                                </button>
+                            </form>
+                            <div class="flex flex-wrap justify-center gap-4 mb-4">
+                                <button type="submit" class="font-bold btn bg-gray-600 text-white py-2 px-4 rounded-md hover:bg-gray-700">
+                                    <i class="fas fa-user mr-2"></i>Infos
+                                </button>
+                                <button type="submit" class="font-bold btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
+                                    <i class="fas fa-file-invoice-dollar mr-2"></i><a href="../Boutiquier/listDettesClient.html">Dettes</a>
+                                </button>
+                                <button type="submit" class="font-bold btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
+                                    <i class="fas fa-plus mr-2"></i><a href="../Boutiquier/nouvelleDette.html">Nouvelle</a>
+                                </button>
+                            </div>
                         <!-- Résultats de la recherche -->
                         <div class="flex justify-center mb-4">
 
@@ -524,30 +521,27 @@
                         <div class="grid grid-cols-2 gap-4">
                             <!-- Colonne des champs de saisie -->
                             <div class="space-y-4 flex flex-col justify-between">
-                                <div class="mb-2 flex items-center space-x-2">
-                                    <label for="nom"
-                                        class="w-1/4 flex-shrink-0 font-semibold text-gray-700 flex items-center"><i
-                                            class="fas fa-user mr-2"></i>Nom :</label>
-                                    <input type="text" id="nom" name="nom"
-                                        class="flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                <div class="mb-2 flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
+                                    <label for="nom" class="w-full sm:w-1/4 flex-shrink-0 font-semibold text-gray-700 flex items-center">
+                                        <i class="fas fa-user mr-2"></i>Nom :
+                                    </label>
+                                    <input type="text" id="nom" name="nom" class="w-full sm:flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                                 </div>
-                                <div class="mb-2 flex items-center space-x-2">
-                                    <label for="prenom"
-                                        class="w-1/4 flex-shrink-0 font-semibold text-gray-700 flex items-center"><i
-                                            class="fas fa-user mr-2"></i>Prénom:</label>
-                                    <input type="text" id="prenom" name="prenom"
-                                        class="flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                <div class="mb-2 flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
+                                    <label for="prenom" class="w-full sm:w-1/4 flex-shrink-0 font-semibold text-gray-700 flex items-center">
+                                        <i class="fas fa-user mr-2"></i>Prénom :
+                                    </label>
+                                    <input type="text" id="prenom" name="prenom" class="w-full sm:flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                                 </div>
-                                <div class="mb-4 flex items-center space-x-2">
-                                    <label for="adresse"
-                                        class="w-1/4 flex-shrink-0 font-semibold text-gray-700 flex items-center"><i
-                                            class="fas fa-map-marker-alt mr-2"></i>Adresse:</label>
-                                    <input type="text" id="adresse" name="adresse"
-                                        class="flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                                <div class="mb-2 flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
+                                    <label for="adresse" class="w-full sm:w-1/4 flex-shrink-0 font-semibold text-gray-700 flex items-center">
+                                        <i class="fas fa-map-marker-alt mr-2"></i>Adresse :
+                                    </label>
+                                    <input type="text" id="adresse" name="adresse" class="w-full sm:flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                                 </div>
                                 <!-- Ajoutez d'autres champs ici si nécessaire -->
                             </div>
-
+                            
                             <!-- Espace pour afficher le code QR -->
                             <div class="flex items-center justify-center">
                                 <div id="qr-code"
@@ -570,59 +564,46 @@
             const sidebar = document.getElementById("sidebar");
             const sidebarToggle = document.getElementById("sidebarToggle");
             const content = document.querySelector(".content");
-
-            sidebarToggle.addEventListener("click", function () {
-                sidebar.classList.toggle("active");
-                content.classList.toggle("sidebar-open");
-            });
+            const overlay = document.getElementById("overlay");
             const closeSidebarBtn = document.getElementById("closeSidebar");
-
-            closeSidebarBtn.addEventListener("click", () => {
-                sidebar.classList.remove("active");
-                document.body.classList.remove("sidebar-active");
-            });
-
+    
+            function toggleSidebar() {
+                sidebar.classList.toggle("active");
+                document.body.classList.toggle("sidebar-active");
+                content.classList.toggle("sidebar-open");
+            }
+    
+            sidebarToggle.addEventListener("click", toggleSidebar);
+            closeSidebarBtn.addEventListener("click", toggleSidebar);
+            overlay.addEventListener("click", toggleSidebar);
+    
             // Fermer le sidebar si on clique en dehors
             document.addEventListener("click", function (event) {
                 const isClickInsideSidebar = sidebar.contains(event.target);
                 const isClickInsideToggle = sidebarToggle.contains(event.target);
-                const sidebar = document.getElementById("sidebar");
-                const content = document.querySelector(".content");
-                const overlay = document.getElementById("overlay");
-                const toggleBtn = document.getElementById("sidebarToggle");
-
-                toggleBtn.addEventListener("click", () => {
-                    sidebar.classList.toggle("active");
-                    document.body.classList.toggle("sidebar-active");
-                });
-
-                overlay.addEventListener("click", () => {
+    
+                if (!isClickInsideSidebar && !isClickInsideToggle && window.innerWidth < 768) {
                     sidebar.classList.remove("active");
                     document.body.classList.remove("sidebar-active");
-                });
-
-                if (
-                    !isClickInsideSidebar &&
-                    !isClickInsideToggle &&
-                    window.innerWidth < 768
-                ) {
-                    sidebar.classList.remove("active");
                     content.classList.remove("sidebar-open");
                 }
             });
-
+    
             // Ajuster le sidebar lors du redimensionnement de la fenêtre
             window.addEventListener("resize", function () {
                 if (window.innerWidth >= 768) {
                     sidebar.classList.add("active");
+                    document.body.classList.add("sidebar-active");
                     content.classList.add("sidebar-open");
                 } else {
                     sidebar.classList.remove("active");
+                    document.body.classList.remove("sidebar-active");
                     content.classList.remove("sidebar-open");
                 }
             });
         });
     </script>
+    
 </body>
 
 </html>
