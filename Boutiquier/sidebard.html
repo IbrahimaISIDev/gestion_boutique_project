@@ -487,27 +487,27 @@
                     <div class="bg-white rounded-lg shadow-md p-6">
                         <h2 class="text-2xl font-bold mb-6 text-blue-800"><i class="fas fa-search-dollar mr-2"></i>Suivi
                             de Dette</h2>
-                            <form class="mb-4 flex flex-wrap gap-2" method="POST" action="#">
-                                <input type="hidden" name="action" value="searchClient">
-                                <label for="telephone" class="w-full sm:w-auto flex-shrink-0 font-semibold text-gray-700 flex items-center">
-                                    <i class="fas fa-phone mr-2"></i>Tél :
-                                </label>
-                                <input type="tel" id="telephone" name="telephone" class="flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                                <button type="submit" class="w-full sm:w-auto btn bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600">
-                                    <i class="fas fa-search mr-2"></i>OK
-                                </button>
-                            </form>
-                            <div class="flex flex-wrap justify-center gap-4 mb-4">
-                                <button type="submit" class="font-bold btn bg-gray-600 text-white py-2 px-4 rounded-md hover:bg-gray-700">
-                                    <i class="fas fa-user mr-2"></i>Infos
-                                </button>
-                                <button type="submit" class="font-bold btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
-                                    <i class="fas fa-file-invoice-dollar mr-2"></i><a href="../Boutiquier/listDettesClient.html">Dettes</a>
-                                </button>
-                                <button type="submit" class="font-bold btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
-                                    <i class="fas fa-plus mr-2"></i><a href="../Boutiquier/nouvelleDette.html">Nouvelle</a>
-                                </button>
-                            </div>
+                        <form class="mb-4 flex gap-2" method="POST" action="#">
+                            <input type="hidden" name="action" value="searchClient">
+                            <label for="telephone"
+                                class="w-1/8 flex-shrink-0 font-semibold text-gray-700 flex items-center"><i
+                                    class="fas fa-phone mr-2"></i>Tél :</label>
+                            <input type="tel" id="telephone" name="telephone"
+                                class="input-shadow flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                            <!-- <input type="text" name="telephone" placeholder="Entrez le numéro de téléphone du client" class="flex-grow p-2 border border-gray-300 rounded-l-md focus:ring-blue-500 focus:border-blue-500"> -->
+                            <button type="submit"
+                                class="btn bg-blue-500 text-white p-2 rounded-r-md hover:bg-blue-600"><i
+                                    class="fas fa-search mr-2"></i>OK</button>
+                        </form>
+                        <div class="mb-4 flex flex-wrap gap-2">
+                            <button class="bg-red-500 text-white px-4 py-2"><i
+                                class="fas fa-user mr-2"></i>Infos</button>
+                            <button class="bg-gray-300 text-gray-700 px-4 py-2"><i
+                                class="fas fa-file-invoice-dollar mr-2"></i>Dettes</button>
+                            <button class="bg-gray-300 text-gray-700 px-4 py-2"><i
+                                class="fas fa-plus mr-2"></i>Nouvelle</button>
+                        </div>
+
                         <!-- Résultats de la recherche -->
                         <div class="flex justify-center mb-4">
 
