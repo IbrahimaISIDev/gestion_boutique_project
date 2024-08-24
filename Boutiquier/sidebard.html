@@ -440,16 +440,16 @@
                                     class="input-shadow flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                             </div>
 
-                            <!-- Toggle pour Création de Compte -->
-                            <div class="mb-4 flex items-center">
-                                <span class="toggle-label mr-2">Créer un compte :</span>
-                                <label class="toggle-switch">
-                                    <input type="checkbox" id="creerCompte" class="sr-only"
-                                        onchange="toggleAccountFields()">
-                                    <span class="slider"></span>
-                                </label>
-                                <span class="toggle-label ml-2 text-gray-700 font-semibold" id="toggleLabel">Non</span>
-                            </div>
+                           <!-- Toggle pour Création de Compte -->
+                           <div class="mb-4 flex items-center">
+                            <span class="toggle-label mr-2">Créer un compte :</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="creerCompte" class="sr-only"
+                                    onchange="toggleAccountFields()">
+                                <span class="slider"></span>
+                            </label>
+                            <span class="toggle-label ml-2 text-gray-700 font-semibold" id="toggleLabel">Non</span>
+                        </div>
 
                             <!-- Champs Supplémentaires pour la Création de Compte -->
                             <div id="accountFields" class="hidden">
@@ -602,7 +602,64 @@
                 }
             });
         });
+        document.addEventListener("DOMContentLoaded", function () {
+            const sidebar = document.getElementById("sidebar");
+            const sidebarToggle = document.getElementById("sidebarToggle");
+            const content = document.querySelector(".content");
+
+            sidebarToggle.addEventListener("click", function () {
+                sidebar.classList.toggle("active");
+                content.classList.toggle("sidebar-open");
+            });
+            const closeSidebarBtn = document.getElementById("closeSidebar");
+
+            closeSidebarBtn.addEventListener("click", () => {
+                sidebar.classList.remove("active");
+                document.body.classList.remove("sidebar-active");
+            });
+
+            // Fermer le sidebar si on clique en dehors
+            document.addEventListener("click", function (event) {
+                const isClickInsideSidebar = sidebar.contains(event.target);
+                const isClickInsideToggle = sidebarToggle.contains(event.target);
+                const sidebar = document.getElementById("sidebar");
+                const content = document.querySelector(".content");
+                const overlay = document.getElementById("overlay");
+                const toggleBtn = document.getElementById("sidebarToggle");
+
+                toggleBtn.addEventListener("click", () => {
+                    sidebar.classList.toggle("active");
+                    document.body.classList.toggle("sidebar-active");
+                });
+
+                overlay.addEventListener("click", () => {
+                    sidebar.classList.remove("active");
+                    document.body.classList.remove("sidebar-active");
+                });
+
+                if (
+                    !isClickInsideSidebar &&
+                    !isClickInsideToggle &&
+                    window.innerWidth < 768
+                ) {
+                    sidebar.classList.remove("active");
+                    content.classList.remove("sidebar-open");
+                }
+            });
+
+            // Ajuster le sidebar lors du redimensionnement de la fenêtre
+            window.addEventListener("resize", function () {
+                if (window.innerWidth >= 768) {
+                    sidebar.classList.add("active");
+                    content.classList.add("sidebar-open");
+                } else {
+                    sidebar.classList.remove("active");
+                    content.classList.remove("sidebar-open");
+                }
+            });
+        });
     </script>
+
     
 </body>
 
