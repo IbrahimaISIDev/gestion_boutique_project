@@ -605,21 +605,23 @@ input:checked + .slider:before {
     </div>
 
     <script>
-       // Toggle des champs de compte
-       const creerCompteToggle = document.getElementById('creerCompte');
-        const accountFields = document.getElementById('accountFields');
-        const toggleLabel = document.getElementById('toggleLabel');
-
-        creerCompteToggle.addEventListener('change', function() {
-            if (this.checked) {
-                accountFields.classList.remove('hidden');
-                toggleLabel.textContent = 'Oui';
-            } else {
-                accountFields.classList.add('hidden');
-                toggleLabel.textContent = 'Non';
-            }
-        });
         document.addEventListener("DOMContentLoaded", function () {
+            // Toggle des champs de compte
+            const creerCompteToggle = document.getElementById('creerCompte');
+            const accountFields = document.getElementById('accountFields');
+            const toggleLabel = document.getElementById('toggleLabel');
+    
+            creerCompteToggle?.addEventListener('change', function() {
+                if (this.checked) {
+                    accountFields.classList.remove('hidden');
+                    toggleLabel.textContent = 'Oui';
+                } else {
+                    accountFields.classList.add('hidden');
+                    toggleLabel.textContent = 'Non';
+                }
+            });
+    
+            // Gestion du sidebar
             const sidebar = document.getElementById("sidebar");
             const sidebarToggle = document.getElementById("sidebarToggle");
             const content = document.querySelector(".content");
@@ -633,8 +635,8 @@ input:checked + .slider:before {
             }
     
             sidebarToggle.addEventListener("click", toggleSidebar);
-            closeSidebarBtn.addEventListener("click", toggleSidebar);
-            overlay.addEventListener("click", toggleSidebar);
+            closeSidebarBtn?.addEventListener("click", toggleSidebar);
+            overlay?.addEventListener("click", toggleSidebar);
     
             // Fermer le sidebar si on clique en dehors
             document.addEventListener("click", function (event) {
@@ -661,63 +663,8 @@ input:checked + .slider:before {
                 }
             });
         });
-        document.addEventListener("DOMContentLoaded", function () {
-            const sidebar = document.getElementById("sidebar");
-            const sidebarToggle = document.getElementById("sidebarToggle");
-            const content = document.querySelector(".content");
-
-            sidebarToggle.addEventListener("click", function () {
-                sidebar.classList.toggle("active");
-                content.classList.toggle("sidebar-open");
-            });
-            const closeSidebarBtn = document.getElementById("closeSidebar");
-
-            closeSidebarBtn.addEventListener("click", () => {
-                sidebar.classList.remove("active");
-                document.body.classList.remove("sidebar-active");
-            });
-
-            // Fermer le sidebar si on clique en dehors
-            document.addEventListener("click", function (event) {
-                const isClickInsideSidebar = sidebar.contains(event.target);
-                const isClickInsideToggle = sidebarToggle.contains(event.target);
-                const sidebar = document.getElementById("sidebar");
-                const content = document.querySelector(".content");
-                const overlay = document.getElementById("overlay");
-                const toggleBtn = document.getElementById("sidebarToggle");
-
-                toggleBtn.addEventListener("click", () => {
-                    sidebar.classList.toggle("active");
-                    document.body.classList.toggle("sidebar-active");
-                });
-
-                overlay.addEventListener("click", () => {
-                    sidebar.classList.remove("active");
-                    document.body.classList.remove("sidebar-active");
-                });
-
-                if (
-                    !isClickInsideSidebar &&
-                    !isClickInsideToggle &&
-                    window.innerWidth < 768
-                ) {
-                    sidebar.classList.remove("active");
-                    content.classList.remove("sidebar-open");
-                }
-            });
-
-            // Ajuster le sidebar lors du redimensionnement de la fenêtre
-            window.addEventListener("resize", function () {
-                if (window.innerWidth >= 768) {
-                    sidebar.classList.add("active");
-                    content.classList.add("sidebar-open");
-                } else {
-                    sidebar.classList.remove("active");
-                    content.classList.remove("sidebar-open");
-                }
-            });
-        });
     </script>
+    
 
     
 </body>
