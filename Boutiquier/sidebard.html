@@ -527,7 +527,7 @@ input:checked + .slider:before {
                         </form>
                     </div>
 
-                    <!-- Suivi Dette Section -->
+                                        <!-- Suivi Dette Section -->
 <div class="bg-white rounded-lg shadow-md p-4 sm:p-6">
     <h2 class="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-blue-800">
         <i class="fas fa-search-dollar mr-2"></i>Suivi de Dette
@@ -542,48 +542,56 @@ input:checked + .slider:before {
             <i class="fas fa-search mr-2"></i>OK
         </button>
     </form>
-    <div class="mb-4 flex flex-wrap gap-2">
-        <button class="bg-red-500 text-white px-4 py-2 rounded"><i class="fas fa-user mr-2"></i>Infos</button>
-        <a href="../Boutiquier/listDettesClient.html">
-            <button class="bg-gray-300 text-gray-700 px-4 py-2 rounded"><i class="fas fa-file-invoice-dollar mr-2"></i>Dettes</button>
+    <!-- Boutons organisés et centrés -->
+    <div class="mb-4 flex justify-center gap-4 sm:gap-2">
+        <button class="bg-red-500 text-white px-4 py-2 rounded flex items-center">
+            <i class="fas fa-user mr-2"></i>Infos
+        </button>
+        <a href="../Boutiquier/listDettesClient.html" class="flex">
+            <button class="bg-gray-300 text-gray-700 px-4 py-2 rounded flex items-center">
+                <i class="fas fa-file-invoice-dollar mr-2"></i>Dettes
+            </button>
         </a>
-        <a href="../Boutiquier/nouvelleDette.html">
-            <button class="bg-gray-300 text-gray-700 px-4 py-2 rounded"><i class="fas fa-plus mr-2"></i>Nouvelle</button>
+        <a href="../Boutiquier/nouvelleDette.html" class="flex">
+            <button class="bg-gray-300 text-gray-700 px-4 py-2 rounded flex items-center">
+                <i class="fas fa-plus mr-2"></i>Nouvelle
+            </button>
         </a>
     </div>
-
-    <!-- Résultats de la recherche -->
-    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div class="w-32 h-32 sm:w-40 sm:h-40 bg-gray-300 rounded-full overflow-hidden mb-4 sm:mb-0">
-            <!-- Placeholder pour la photo du client -->
-            <div class="w-full h-full flex items-center justify-center text-gray-500">
-                <i class="fas fa-user-circle text-4xl sm:text-6xl"></i>
-            </div>
+                    <!-- Résultats de la recherche -->
+<div class="flex flex-col items-center">
+    <!-- Photo de l'utilisateur -->
+    <div class="w-32 h-32 sm:w-40 sm:h-40 bg-gray-300 rounded-full overflow-hidden mb-4">
+        <div class="w-full h-full flex items-center justify-center text-gray-500">
+            <i class="fas fa-user-circle text-4xl sm:text-6xl"></i>
         </div>
-        
+    </div>
+    
+    <!-- Champs de saisie et Code QR -->
+    <div class="w-full flex flex-col sm:flex-row justify-between gap-4">
         <div class="space-y-4 flex-grow">
-            <div class="mb-2 flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
-                <label for="nom" class="w-full sm:w-1/4 flex-shrink-0 font-semibold text-gray-700 flex items-center">
+            <div class="mb-2">
+                <label for="nom" class="block font-semibold text-gray-700 mb-1">
                     <i class="fas fa-user mr-2"></i>Nom :
                 </label>
-                <input type="text" id="nom" name="nom" class="w-full sm:flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                <input type="text" id="nom" name="nom" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
             </div>
-            <div class="mb-2 flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
-                <label for="prenom" class="w-full sm:w-1/4 flex-shrink-0 font-semibold text-gray-700 flex items-center">
+            <div class="mb-2">
+                <label for="prenom" class="block font-semibold text-gray-700 mb-1">
                     <i class="fas fa-user mr-2"></i>Prénom :
                 </label>
-                <input type="text" id="prenom" name="prenom" class="w-full sm:flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                <input type="text" id="prenom" name="prenom" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
             </div>
-            <div class="mb-2 flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
-                <label for="adresse" class="w-full sm:w-1/4 flex-shrink-0 font-semibold text-gray-700 flex items-center">
+            <div class="mb-2">
+                <label for="adresse" class="block font-semibold text-gray-700 mb-1">
                     <i class="fas fa-map-marker-alt mr-2"></i>Adresse :
                 </label>
-                <input type="text" id="adresse" name="adresse" class="w-full sm:flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                <input type="text" id="adresse" name="adresse" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
             </div>
         </div>
         
         <!-- Espace pour afficher le code QR -->
-        <div class="flex items-center justify-center mt-4 sm:mt-0">
+        <div class="flex items-center justify-center">
             <div id="qr-code" class="w-32 h-32 sm:w-40 sm:h-40 border border-gray-300 flex items-center justify-center">
                 <!-- Remplacez cette image par un vrai code QR -->
                 <img src="" alt="Code QR" class="w-full h-full object-contain">
