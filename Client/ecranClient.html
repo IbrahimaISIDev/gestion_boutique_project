@@ -282,6 +282,19 @@
                 font-size: 14px;
             }
         }
+        .stat-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+  }
+  .stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  .stat-icon {
+    background: linear-gradient(135deg, #3182ce, #2b6cb0);
+  }
     </style>
 </head>
 
@@ -367,38 +380,61 @@
                         class="block px-4 py-2 text-sm text-center text-gray-700 hover:bg-gray-100">DECONNEXION</a>
                 </div>
             </header>
-            <main class="mt-8 mx-4 md:mr-8 rounded-xl bg-white p-4 shadow-sm flex flex-col">
+            <main class="mt-8 mx-4 md:mr-8 rounded-xl bg-white p-4 shadow-sm flex flex-col ">
+                <div class="p-8" style="background: linear-gradient(to right, #2b6cb0, #2d3748);">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      <!-- Carte Total des Dettes -->
+                      <div class="stat-card rounded-lg p-6 text-white">
+                        <div class="flex items-center mb-4">
+                          <div class="stat-icon w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-filter text-xl"></i>
+                          </div>
+                          <h3 class="text-lg font-semibold">Nombres de Dettes</h3>
+                        </div>
+                        <p class="text-3xl font-bold mb-2">7</p>
+                        <div class="flex items-center text-sm">
+                          <i class="fas fa-arrow-up mr-1 text-green-400"></i>
+                          <span class="text-green-400">3.5%</span>
+                          <span class="ml-2 text-gray-300">depuis le mois dernier</span>
+                        </div>
+                      </div>
+                  
+                      <!-- Carte Nombre de Clients -->
+                      <div class="stat-card rounded-lg p-6 text-white">
+                        <div class="flex items-center mb-4">
+                          <div class="stat-icon w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-money-bill-wave text-xl"></i>
+                          </div>
+                          <h3 class="text-lg font-semibold">Total Dettes</h3>
+                        </div>
+                        <p class="text-3xl font-bold mb-2">120.000 FCFA</p>
+                        <div class="flex items-center text-sm">
+                          <i class="fas fa-arrow-up mr-1 text-green-400"></i>
+                          <span class="text-green-400">5%</span>
+                          <span class="ml-2 text-gray-300">depuis la semaine dernière</span>
+                        </div>
+                      </div>
+                  
+                      <!-- Carte Demandes en Cours -->
+                      <div class="stat-card rounded-lg p-6 text-white">
+                        <div class="flex items-center mb-4">
+                          <div class="stat-icon w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-exclamation-circle text-xl"></i>
+                          </div>
+                          <h3 class="text-lg font-semibold">Demandes en Cours</h3>
+                        </div>
+                        <p class="text-3xl font-bold mb-2">5</p>
+                        <div class="flex items-center text-sm">
+                          <i class="fas fa-arrow-up mr-1 text-green-400"></i>
+                          <span class="text-green-400">10%</span>
+                          <span class="ml-2 text-gray-300">depuis hier</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 <div class="product-lists">
                     <div class="product-list bg-white rounded-lg shadow p-4 w-full">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-6">
-                            <!-- Cartes statistiques -->
-                            <div
-                                class="card bg-gradient-to-b from-gray-300 to-gray-400 text-white p-6 rounded-3xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
-                                <i class="fas fa-filter text-3xl mr-4"></i>
-                                <div>
-                                    <h3>Nombres de Dettes</h3>
-                                    <p class="font-bold">5</p>
-                                </div>
-                            </div>
-
-                            <div
-                                class="card bg-gradient-to-b from-gray-300 to-gray-400 text-white p-6 rounded-3xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
-                                <i class="fas fa-money-bill-wave text-3xl mr-4 icon text-green-500"></i>
-                                <div>
-                                    <h3>Total des Dettes</h3>
-                                    <p class="font-bold">50.000 CFA</p>
-                                </div>
-                            </div>
-
-                            <div
-                                class="card bg-gradient-to-b from-gray-300 to-gray-400 text-white p-6 rounded-3xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
-                                <i class="fas fa-exclamation-circle icon text-3xl mr-4  text-red-500"></i>
-                                <div>
-                                    <h3>Nombre de Demandes</h3>
-                                    <p class="font-bold">15</p>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <div class="mb-4">
                             <h3 class="text-lg font-semibold mb-4">Liste de mes dettes</h3>
                         </div>

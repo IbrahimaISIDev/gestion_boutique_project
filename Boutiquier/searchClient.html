@@ -35,7 +35,6 @@
         .sidebar.active {
             left: 0;
         }
-
         .sidebar a {
             display: flex;
             align-items: center;
@@ -184,6 +183,54 @@
             background-color: #2b6cb0;
             color: #ffffff;
         }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #2563EB;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .input-shadow {
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
 
         @media (min-width: 768px) {
             .sidebar {
@@ -319,6 +366,16 @@
                 font-size: 0.8rem;
             }
         }
+        @media (max-width: 640px) {
+        #clientModal {
+            align-items: flex-start;
+            padding-top: 1rem;
+        }
+        #clientModal .relative {
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+    }
     </style>
 </head>
 
@@ -426,11 +483,11 @@
                         <!-- Header -->
 
                         <!-- Filter and New Client Button -->
-                        <div class="flex justify-between flex-wrap space-x-2 space-y-2 items-center mb-4">
+                        <div class="flex justify-between items-center mb-4">
                             <!-- Filter by Phone -->
                             <div class="flex items-center space-x-2">
                                 <input type="text" placeholder="Filtrer par Telephone"
-                                    class="p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none w-3/4">
+                                    class="p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none">
                                 <button
                                     class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">OK</button>
                             </div>
@@ -440,11 +497,10 @@
                                         class="px-4 py-2 bg-blue-600 text-white rounded-md shadow hover:bg-blue-700">
                                         Compte
                                     </button></a>
-                                <a href="../Boutiquier/sidebard.html"><button
+                                <button data-modal-target="clientModal" data-modal-toggle="clientModal"
                                         class="px-4 py-2 bg-blue-600 text-white rounded-md shadow hover:bg-blue-700">
                                         Nouvelle Client
-                                    </button></a>
-
+                                    </button>
                             </div>
                         </div>
                         <div class="overflow-x-auto">
@@ -517,7 +573,7 @@
                         <div class="flex justify-end mt-4 mb-2 sm:mb-0 space-x-2">
                             <button class="px-3 py-1 bg-gray-300 rounded-md shadow hover:bg-gray-400">
                                 &lt;
-                            </button>
+                            </button>   
                             <button class="px-3 py-1 bg-blue-500 text-white rounded-md shadow hover:bg-blue-600">
                                 1
                             </button>
@@ -533,6 +589,115 @@
             </main>
         </div>
     </div>
+
+    <div id="clientModal" tabindex="-1" aria-hidden="true"
+    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
+    <div class="relative p-4 w-full max-w-[95%] sm:max-w-2xl h-full md:h-auto">
+        <div class="relative bg-white rounded-lg shadow pt-10 px-4 pb-4 w-full max-w-[95%] sm:max-w-md mx-auto">
+            <button type="button"
+                class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
+                data-modal-hide="clientModal">
+                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 011.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                        clip-rule="evenodd"></path>
+                </svg>
+            </button>
+            <h3 class="mb-4 text-lg font-normal text-gray-500">N. UTILISATEUR</h3>
+            <div class="p-6 text-center border rounded-xl">
+                <form method="POST" action="#" enctype="multipart/form-data" class="space-y-6">
+                    <div class="form-row flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2 mb-4">
+                        <label for="nom" class="w-full sm:w-1/4 font-semibold text-gray-700 flex items-center">
+                            <i class="fas fa-user mr-2"></i>Nom
+                        </label>
+                        <input type="text" id="nom" name="nom" class="input-shadow w-full sm:flex-grow p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="form-row flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2 mb-4">
+                        <label for="prenom" class="w-full sm:w-1/4 font-semibold text-gray-700 flex items-center">
+                            <i class="fas fa-user mr-2"></i>Prénom
+                        </label>
+                        <input type="text" id="prenom" name="prenom" class="input-shadow w-full sm:flex-grow p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="form-row flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2 mb-4">
+                        <label for="telephone" class="w-full sm:w-1/4 font-semibold text-gray-700 flex items-center">
+                            <i class="fas fa-phone mr-2"></i>Téléphone
+                        </label>
+                        <input type="tel" id="telephone" name="telephone" class="input-shadow w-full sm:flex-grow p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="form-row flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2 mb-4">
+                        <label for="adresse" class="w-full sm:w-1/4 font-semibold text-gray-700 flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2"></i>Adresse
+                        </label>
+                        <input type="text" id="adresse" name="adresse" class="input-shadow w-full sm:flex-grow p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="form-row flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2 mb-4">
+                        <label for="genre" class="w-full sm:w-1/4 font-semibold text-gray-700 flex items-center">
+                            <i class="fas fa-venus-mars mr-2"></i>Genre
+                        </label>
+                        <div class="w-full sm:flex-grow flex items-center">
+                            <label class="mr-4 flex items-center">
+                                <input type="radio" name="genre" value="Homme" class="mr-2">
+                                Homme
+                            </label>
+                            <label class="flex items-center">
+                                <input type="radio" name="genre" value="Femme" class="mr-2">
+                                Femme
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-row flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2 mb-4">
+                        <label for="photo" class="w-full sm:w-1/4 font-semibold text-gray-700 flex items-center">
+                            <i class="fas fa-camera mr-2"></i>Photo
+                        </label>
+                        <input type="file" id="photo" name="photo" class="input-shadow w-full sm:flex-grow p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+
+                    <!-- Toggle pour Création de Compte -->
+                    <div class="flex items-center justify-between">
+                        <span class="font-semibold text-gray-700">Créer un compte :</span>
+                        <div class="flex items-center">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="creerCompte" class="sr-only" onchange="toggleAccountFields()">
+                                <span class="slider"></span>
+                            </label>
+                            <span class="ml-2 text-gray-700 font-semibold" id="toggleLabel">Non</span>
+                        </div>
+                    </div>
+
+                    <!-- Champs Supplémentaires pour la Création de Compte -->
+                    <div id="accountFields" class="hidden space-y-6 mt-4">
+                        <!-- Champ Login -->
+                        <div class="form-row flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2 mb-4">
+                            <label for="login" class="w-full sm:w-1/4 font-semibold text-gray-700 flex items-center">
+                                <i class="fas fa-envelope mr-2"></i>Login
+                            </label>
+                            <input type="text" id="login" name="login" class="input-shadow w-full sm:flex-grow p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+
+                        <!-- Champ Password -->
+                        <div class="form-row flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2 mb-4">
+                            <label for="password" class="w-full sm:w-1/4 font-semibold text-gray-700 flex items-center">
+                                <i class="fas fa-lock mr-2"></i>Password
+                            </label>
+                            <input type="password" id="password" name="password" class="input-shadow w-full sm:flex-grow p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                        <button type="reset" class="w-full sm:w-auto bg-red-600 text-white font-bold py-2 px-4 rounded-md hover:bg-red-700 flex items-center justify-center">
+                            <i class="fas fa-times mr-2"></i>Annuler
+                        </button>
+                        <button type="submit" class="w-full sm:w-auto bg-blue-600 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-700 flex items-center justify-center">
+                            <i class="fas fa-save mr-2"></i>Enregistrer
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const sidebar = document.getElementById("sidebar");
