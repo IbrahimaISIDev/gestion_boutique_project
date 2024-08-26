@@ -369,7 +369,7 @@
                 href="../Boutiquier/demandes.html"><i class="fas fa-envelope text-lg mr-3"></i> Demandes
             </a>
             <a class="block px-4 py-2 mt-2 text-sm font-semibold text-white hover:bg-gray-600"
-                href="../SuperAdmin/users.html"><i class="fas fa-user text-lg mr-3"></i> Utilisateurs
+                href="../SuperAdmin/ecranAdmin.html"><i class="fas fa-user text-lg mr-3"></i> Utilisateurs
             </a>
         </div>
         <div class="overlay" id="overlay"></div>
@@ -425,58 +425,80 @@
                 <div class="flex flex-col justify-between gap-4 mb-6 w-full bg-white rounded-lg shadow p-4">
                     <div class="flex flex-col sm:flex-row justify-between items-center mb-4">
                         <div class="text-xl font-bold mb-2 sm:mb-0">Ecran Admin</div>
-                        <div class="flex flex-wrap justify-center sm:justify-end gap-2">
+                    </div>
+                    <div class="flex flex-col sm:flex-row justify-between items-center">
+                        <div class="flex flex-wrap justify-center sm:justify-start gap-2">
                             <button class="bg-red-500 text-white px-3 py-1 rounded">ALL</button>
-                            <button class="bg-white border border-gray-300 px-3 py-1 rounded">Compte</button>
-                            <button class="bg-white border border-gray-300 px-3 py-1 rounded">Pas Compte</button>
+                            <button class="bg-white border border-gray-300 px-3 py-1 rounded">Admin</button>
+                            <button class="bg-white border border-gray-300 px-3 py-1 rounded">Boutiquier</button>
+                            <button class="bg-white border border-gray-300 px-3 py-1 rounded">Client</button>
                         </div>
+                        <button data-modal-target="userModal" data-modal-toggle="userModal"
+                            class="bg-blue-600 text-white px-4 py-2 rounded">NOUVEAU</button>
                     </div>
                     <!-- Table responsive -->
                     <div class="overflow-x-auto">
                         <table class="min-w-full bg-white">
                             <thead class="bg-blue-600 text-white">
                                 <tr>
-                                    <th class="py-2 px-4 text-center">PRENOM</th>
-                                    <th class="py-2 px-4 text-center">NOM</th>
+                                    <th class="py-2 px-4 text-center">ROLE</th>
+                                    <th class="py-2 px-4 text-center">NOM COMPLET</th>
+                                    <th class="py-2 px-4 text-center">LOGIN</th>
                                     <th class="py-2 px-4 text-center">TELEPHONE</th>
                                     <th class="py-2 px-4 text-center">ACTION</th>
                                 </tr>
                             </thead>
                             <tbody class="text-gray-700">
                                 <tr>
-                                    <td class="border-t border-gray-200 py-2 px-4 text-center">ousseynou</td>
-                                    <td class="border-t border-gray-200 py-2 px-4 text-center">diedhiou</td>
+                                    <td class="border-t border-gray-200 py-2 px-4 text-center">client</td>
+                                    <td class="border-t border-gray-200 py-2 px-4 text-center">ousseynou diedhiou</td>
+                                    <td class="border-t border-gray-200 py-2 px-4 text-center">diedhiou@gmail.com</td>
                                     <td class="border-t border-gray-200 py-2 px-4 text-center">785304869</td>
                                     <td class="border-t border-gray-200 py-2 px-4 text-center">
-                                        <button data-modal-target="compteModal" data-modal-toggle="compteModal"
+                                        <button data-modal-target="compteModal" data-modal-toggle="compteModal" title="CREATION COMPTE"
                                             class="bg-blue-500 text-white py-1 px-4 rounded">
-                                            compte
+                                            <i class="fas fa-user-plus mr-2"></i>
                                         </button>
+                                        <button data-modal-target="userModal" data-modal-toggle="userModal" title="MODIFIER"
+                                            class="bg-blue-500 text-white px-3 py-1 rounded"><i class="fas fa-edit"></i>
+                                            </button>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="border-t border-gray-200 py-2 px-4 text-center">ibrahima</td>
-                                    <td class="border-t border-gray-200 py-2 px-4 text-center">diallo</td>
+                                    <td class="border-t border-gray-200 py-2 px-4 text-center">admin</td>
+                                    <td class="border-t border-gray-200 py-2 px-4 text-center">ibrahima diallo</td>
+                                    <td class="border-t border-gray-200 py-2 px-4 text-center">sory@gmail.com</td>
                                     <td class="border-t border-gray-200 py-2 px-4 text-center">785719115</td>
                                     <td class="border-t border-gray-200 py-2 px-4 text-center">
+                                        <button data-modal-target="userModal" data-modal-toggle="userModal" title="MODIFIER"
+                                            class="bg-blue-500 text-white px-3 py-1 rounded"><i class="fas fa-edit"></i>
+                                            </button>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="border-t border-gray-200 py-2 px-4 text-center">ndiaga</td>
-                                    <td class="border-t border-gray-200 py-2 px-4 text-center">lo</td>
+                                    <td class="border-t border-gray-200 py-2 px-4 text-center">client</td>
+                                    <td class="border-t border-gray-200 py-2 px-4 text-center">ndiaga lo</td>
+                                    <td class="border-t border-gray-200 py-2 px-4 text-center">ndiaga@gmail.com</td>
                                     <td class="border-t border-gray-200 py-2 px-4 text-center">775714386</td>
                                     <td class="border-t border-gray-200 py-2 px-4 text-center">
-                                        <button data-modal-target="compteModal" data-modal-toggle="compteModal"
+                                        <button data-modal-target="compteModal" data-modal-toggle="compteModal" title="CREATION COMPTE"
                                             class="bg-blue-500 text-white py-1 px-4 rounded">
-                                            compte
+                                            <i class="fas fa-user-plus mr-2"></i>
                                         </button>
+                                        <button data-modal-target="userModal" data-modal-toggle="userModal" title="MODIFIER"
+                                            class="bg-blue-500 text-white px-3 py-1 rounded"><i class="fas fa-edit"></i>
+                                            </button>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="border-t border-gray-200 py-2 px-4 text-center">astou</td>
-                                    <td class="border-t border-gray-200 py-2 px-4 text-center">kane</td>
+                                    <td class="border-t border-gray-200 py-2 px-4 text-center">boutiquier</td>
+                                    <td class="border-t border-gray-200 py-2 px-4 text-center">astou kane</td>
+                                    <td class="border-t border-gray-200 py-2 px-4 text-center">astou@gmail.com</td>
                                     <td class="border-t border-gray-200 py-2 px-4 text-center">762346245</td>
                                     <td class="border-t border-gray-200 py-2 px-4 text-center">
+                                        <button data-modal-target="userModal" data-modal-toggle="userModal" title="MODIFIER"
+                                            class="bg-blue-500 text-white px-3 py-1 rounded"><i class="fas fa-edit"></i>
+                                            </button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -543,6 +565,56 @@
                         <button
                             class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg transition duration-200">ENREGISTRER</button>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="userModal" tabindex="-1" aria-hidden="true"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
+        <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
+            <div class="relative bg-white rounded-lg shadow pt-10 px-4 pb-4 w-full max-w-md mx-auto">
+                <button type="button"
+                    class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
+                    data-modal-hide="userModal">
+                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 011.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                <h3 class="mb-4 text-lg font-normal text-gray-500">N. UTILISATEUR</h3>
+                <div class="p-6 text-center border rounded-xl">
+                    <form class="space-y-4">
+                        <input type="text" name="Prenom" placeholder="Prenom"
+                            class="border border-gray-300 p-2 w-full rounded-lg" />
+                        <input type="text" name="Nom" placeholder="Nom"
+                            class="border border-gray-300 p-2 w-full rounded-lg" />
+                        <input type="text" name="Tel" placeholder="Tel"
+                            class="border border-gray-300 p-2 w-full rounded-lg" />
+                        <input type="text" name="Adresse" placeholder="Adresse"
+                            class="border border-gray-300 p-2 w-full rounded-lg" />
+                        <input type="text" name="Login" placeholder="Login"
+                            class="border border-gray-300 p-2 w-full rounded-lg" />
+                        <input type="password" name="Password" placeholder="Password"
+                            class="border border-gray-300 p-2 w-full rounded-lg" />
+                        <div class="flex items-center">
+                            <input id="fileInput" name="fileInput" type="file"
+                                class="border border-gray-300 w-full rounded-r-lg pl-2" />
+                        </div>
+                        <div class="flex flex-wrap justify-between gap-2" name="role">
+                            <button type="button"
+                                class="bg-gray-300 text-gray-700 px-4 py-2 rounded flex-grow">Apprentie</button>
+                            <button type="button"
+                                class="bg-gray-300 text-gray-700 px-4 py-2 rounded flex-grow">Boutiquier</button>
+                            <button type="button"
+                                class="bg-blue-600 text-white px-4 py-2 rounded flex-grow">Clients</button>
+                        </div>
+                        <div class="flex justify-between">
+                            <button type="button" class="bg-red-500 text-white px-4 py-2 rounded">ANNULER</button>
+                            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">ENREGISTRER</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
