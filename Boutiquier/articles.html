@@ -365,7 +365,7 @@
                 href="../Boutiquier/demandes.html"><i class="fas fa-envelope text-lg mr-3"></i> Demandes
             </a>
             <a class="block px-4 py-2 mt-2 text-sm font-semibold text-white hover:bg-gray-600"
-                href="../SuperAdmin/users.html"><i class="fas fa-user text-lg mr-3"></i> Utilisateurs
+                href="../SuperAdmin/ecranAdmin.html"><i class="fas fa-user text-lg mr-3"></i> Utilisateurs
             </a>
         </div>
         <div class="overlay" id="overlay"></div>
@@ -439,7 +439,9 @@
                             <table class="w-full">
                                 <thead>
                                     <tr class="bg-blue-500 text-white">
-                                        <th class="py-2 px-4 text-center">Cache</th>
+                                        <th class="p-2 text-center">
+                                            <i class="fas fa-check-square"></i>
+                                        </th>
                                         <th class="py-2 px-4 text-center">Article</th>
                                         <th class="py-2 px-4 text-center">Prix</th>
                                         <th class="py-2 px-4 text-center">Qte en stock</th>
@@ -447,7 +449,10 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="py-2 px-4 text-center"></td>
+                                        <td class="p-2 text-center">
+                                            <input type="checkbox" name="article[]" value="1"
+                                                class="form-checkbox h-4 w-4 text-blue-600">
+                                        </td>
                                         <td class="py-2 px-4 text-center">Chocolat</td>
                                         <td class="py-2 px-4 text-center">2000</td>
                                         <td class="py-2 px-4 text-center">5</td>

@@ -280,19 +280,22 @@
         font-size: 14px;
       }
     }
+
     .stat-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: all 0.3s ease;
-  }
-  .stat-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  }
-  .stat-icon {
-    background: linear-gradient(135deg, #3182ce, #2b6cb0);
-  }
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .stat-icon {
+      background: linear-gradient(135deg, #3182ce, #2b6cb0);
+    }
   </style>
 </head>
 
@@ -336,7 +339,7 @@
         href="../Boutiquier/demandes.html"><i class="fas fa-envelope text-lg mr-3"></i> Demandes
       </a>
       <a class="block px-4 py-2 mt-2 text-sm font-semibold text-white hover:bg-gray-600"
-        href="../SuperAdmin/users.html"><i class="fas fa-user text-lg mr-3"></i> Utilisateurs
+        href="../SuperAdmin/ecranAdmin.html"><i class="fas fa-user text-lg mr-3"></i> Utilisateurs
       </a>
     </div>
     <div class="overlay" id="overlay"></div>
@@ -381,13 +384,13 @@
           </div>
           <a href="../Client/profile.html"
             class="block px-4 py-2 text-sm text-center text-gray-700 hover:bg-gray-100">MODIFIER</a>
-            <a href="../auth/login.html"
+          <a href="../auth/login.html"
             class="block px-4 py-2 text-sm text-center text-gray-700 hover:bg-gray-100">DECONNEXION</a>
         </div>
       </header>
 
       <main class="mt-8 mx-4 md:mr-8 rounded-xl bg-white p-4 shadow-sm flex flex-col">
-        <div class="p-8" style="background: linear-gradient(to right, #2b6cb0, #2d3748);">
+        <div class="p-8" style="background: linear-gradient(to right, #2b6cb0, #2d3748)">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- Carte Total des Dettes -->
             <div class="stat-card rounded-lg p-6 text-white">
@@ -404,7 +407,7 @@
                 <span class="ml-2 text-gray-300">depuis le mois dernier</span>
               </div>
             </div>
-        
+
             <!-- Carte Nombre de Clients -->
             <div class="stat-card rounded-lg p-6 text-white">
               <div class="flex items-center mb-4">
@@ -420,7 +423,7 @@
                 <span class="ml-2 text-gray-300">depuis la semaine dernière</span>
               </div>
             </div>
-        
+
             <!-- Carte Articles en Stock -->
             <div class="stat-card rounded-lg p-6 text-white">
               <div class="flex items-center mb-4">
@@ -436,7 +439,7 @@
                 <span class="ml-2 text-gray-300">depuis hier</span>
               </div>
             </div>
-        
+
             <!-- Carte Demandes en Cours -->
             <div class="stat-card rounded-lg p-6 text-white">
               <div class="flex items-center mb-4">

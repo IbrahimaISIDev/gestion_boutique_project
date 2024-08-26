@@ -319,6 +319,22 @@
                 font-size: 0.8rem;
             }
         }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-icon {
+            background: linear-gradient(135deg, #3182ce, #2b6cb0);
+        }
     </style>
 </head>
 
@@ -406,30 +422,30 @@
             </header>
             <main class="mt-8 mx-4 md:mr-8 rounded-xl bg-white p-4 shadow-sm flex flex-col main-content">
                 <div class="bg-white p-6 rounded-lg shadow-md">
-                    <div class="flex flex-col md:flex-row justify-between mb-6 w-full gap-4">
-                        <!-- User Info -->
-                        <div
-                            class="w-full md:w-1/2 lg:w-1/4 p-4 bg-gray-200 border border-black rounded-lg shadow-lg mb-4 md:mb-0">
-                            <div class="flex flex-col justify-center space-y-4">
-                                <div class="flex items-center space-x-8">
-                                    <img src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2"
-                                        alt="User Photo" class="w-20 h-20 rounded-full">
-                                    <div>
-                                        <p class="font-bold">Prenom: Ibrahima Sory</p>
-                                        <p class="font-bold">Nom: Diallo</p>
-                                        <p class="font-bold">Tel: 785619115</p>
+                    <div class="p-4 sm:p-6 md:p-8 mb-8" style="background: linear-gradient(to right, #2b6cb0, #2d3748)">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
+                            <!-- Carte Total des Dettes -->
+                            <div class="stat-card rounded-lg p-4 sm:p-6 text-white font-semibold text-lg sm:text-xl md:text-2xl flex flex-col justify-between">
+                                <div class="flex flex-col justify-center space-y-4">
+                                    <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 md:space-x-8">
+                                        <img src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2"
+                                            alt="User Photo" class="w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full">
+                                        <div class="flex flex-col justify-between h-full pb-4 text-center sm:text-left">
+                                            <p>Prenom: Ibrahima Sory</p>
+                                            <p>Nom: Diallo</p>
+                                            <p>Tel: 785619115</p>
+                                        </div>
                                     </div>
+                                    <p class="email text-center sm:text-left">Email: sorydiallo371@gmail.com</p>
                                 </div>
-                                <p class="font-bold">Email: sorydiallo371@gmail.com</p>
                             </div>
-                        </div>
-
-                        <!-- Debt Summary -->
-                        <div
-                            class="w-full md:w-1/2 lg:w-1/4 p-4 bg-gray-200 border border-black rounded-lg shadow-lg flex flex-col justify-evenly">
-                            <p class="font-bold text-xl">Montant Total: 100 000 FCFA</p>
-                            <p class="font-bold text-xl">Montant Versé: 55 000 FCFA</p>
-                            <p class="font-bold text-xl">Montant Restant: 45 000 FCFA</p>
+                
+                            <!-- Carte Demandes en Cours -->
+                            <div class="stat-card rounded-lg p-4 sm:p-6 font-semibold text-white text-lg sm:text-xl md:text-3xl flex flex-col justify-between">
+                                <p>Montant Total: 100.000 FCFA</p>
+                                <p>Montant Versé: 55.000 FCFA</p>
+                                <p>Montant Restant: 45.000 FCFA</p>
+                            </div>
                         </div>
                     </div>
                     <div class="product-lists">
@@ -482,9 +498,8 @@
                             <div class="flex justify-between items-center mb-4 flex-wrap">
                                 <h3 class="text-xl font-bold mb-2 sm:mb-0">Liste de produits selectionné</h3>
                             </div>
-                            <div class="mb-4">
-                                <label class="block mb-2">Total:</label>
-                                <input type="text" class="border rounded px-4 py-2 w-full">
+                            <div class="mb-4 flex justify-end">
+                                <label class="block mb-2 text-lg font-medium">Total: 40.000 FCFA</label>
                             </div>
                             <div class="overflow-x-auto">
                                 <table class="w-full">
