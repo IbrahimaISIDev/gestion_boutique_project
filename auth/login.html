@@ -49,8 +49,24 @@
             <div class="absolute top-0 left-0 bg-yellow-400 w-24 h-24 rounded-full transform -translate-x-12 -translate-y-12 parallax-shape"></div>
             <div class="absolute bottom-0 right-0 bg-yellow-400 w-36 h-36 rounded-full transform translate-x-12 translate-y-12 parallax-shape"></div>
 
-            <div class="relative z-10">
-                <img src="logo.png" alt="Logo de la boutique" class="w-24 mx-auto mb-4 animate-pulse">
+            <div class="relative z-10 flex flex-col items-center">
+                <div class="p-4 flex items-center h-32">
+                    <svg class="w-20 h-20 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="40" height="24" rx="4" fill="white" />
+                        <path
+                            d="M17 8H7C5.89543 8 5 8.89543 5 10V16C5 17.1046 5.89543 18 7 18H17C18.1046 18 19 17.1046 19 16V10C19 8.89543 18.1046 8 17 8Z"
+                            stroke="#1E40AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path
+                            d="M12 12C12.5523 12 13 11.5523 13 11C13 10.4477 12.5523 10 12 10C11.4477 10 11 10.4477 11 11C11 11.5523 11.4477 12 12 12Z"
+                            stroke="#1E40AF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M16 16H8" stroke="#1E40AF" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                    <div class="flex flex-col">
+                        <span class="text-white font-bold text-xl">GESTION</span>
+                        <span class="text-white font-bold text-xl">BOUTIQUE</span>
+                    </div>
+                </div>
                 <h2 class="text-4xl font-extrabold mb-4 text-center">Bienvenue <br> Diallo Boutique</h2>
                 <p class="text-lg text-blue-200 mb-6 text-center">La plateforme idéale pour gérer vos ventes, articles et clients avec efficacité.</p>
             </div>
@@ -76,7 +92,7 @@
                 </div>
                 <button type="submit"
                     class="w-full bg-yellow-500 text-white py-3 rounded-lg font-semibold hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 btn-hover transition-all">
-                    <a class="py-3 px-32 rounded-lg" href="../SuperAdmin/dashboard.html">Se connecter</a>
+                    <a class="py-3 px-24 md:px-32 rounded-lg" href="../SuperAdmin/dashboard.html">Se connecter</a>
                 </button>
                 <div class="flex justify-between items-center mt-4 text-sm">
                     <a href="#" class="text-blue-600 hover:text-blue-800 transition-colors">Mot de passe oublié?</a>
@@ -84,7 +100,7 @@
                 </div>
                 <button type="submit"
                 class="w-full bg-blue-700 text-white py-3 rounded-lg font-semibold hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 btn-hover transition-all">
-                <a class="py-3 px-32 rounded-lg" href="../Client/mesDemandes.html">Espace Client</a>
+                <a class="py-3 px-20 md:px-28 rounded-lg" href="../Client/mesDemandes.html">Espace Client</a>
             </button>
             </form>
         </div>

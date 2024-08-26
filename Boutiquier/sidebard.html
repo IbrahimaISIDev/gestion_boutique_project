@@ -344,7 +344,7 @@
     <div class="flex flex-col md:flex-row">
         <!-- Sidebar -->
         <div class="sidebar" id="sidebar">
-            <button id="closeSidebar" class="absolute top-4 right-4 text-white hover:text-gray-300">
+            <button id="closeSidebar" class="absolute md:hidden top-4 right-4 text-white hover:text-gray-300">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
@@ -391,7 +391,7 @@
         <div class="content">
             <header class="flex flex-col sm:flex-row justify-between items-center bg-white shadow-md px-4 py-2 header">
                 <!-- Bouton pour afficher/masquer la sidebar sur mobile -->
-                <button id="sidebarToggle" class="sm:hidden text-gray-500 mb-2 sm:mb-0">
+                <button id="sidebarToggle" class="md:hidden text-gray-500 mb-2 sm:mb-0">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -624,7 +624,9 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Toggle des champs de compte
+            const sidebar = document.getElementById("sidebar");
+            const sidebarToggle = document.getElementById("sidebarToggle");
+            const content = document.querySelector(".content");
             const creerCompteToggle = document.getElementById('creerCompte');
             const accountFields = document.getElementById('accountFields');
             const toggleLabel = document.getElementById('toggleLabel');
@@ -638,32 +640,44 @@
                     toggleLabel.textContent = 'Non';
                 }
             });
+            
+            sidebarToggle.addEventListener("click", function () {
+                sidebar.classList.toggle("active");
+                content.classList.toggle("sidebar-open");
+            });
 
-            // Gestion du sidebar
-            const sidebar = document.getElementById("sidebar");
-            const sidebarToggle = document.getElementById("sidebarToggle");
-            const content = document.querySelector(".content");
-            const overlay = document.getElementById("overlay");
             const closeSidebarBtn = document.getElementById("closeSidebar");
 
-            function toggleSidebar() {
-                sidebar.classList.toggle("active");
-                document.body.classList.toggle("sidebar-active");
-                content.classList.toggle("sidebar-open");
-            }
-
-            sidebarToggle.addEventListener("click", toggleSidebar);
-            closeSidebarBtn?.addEventListener("click", toggleSidebar);
-            overlay?.addEventListener("click", toggleSidebar);
+            closeSidebarBtn.addEventListener("click", () => {
+                sidebar.classList.remove("active");
+                document.body.classList.remove("sidebar-active");
+            });
 
             // Fermer le sidebar si on clique en dehors
             document.addEventListener("click", function (event) {
                 const isClickInsideSidebar = sidebar.contains(event.target);
                 const isClickInsideToggle = sidebarToggle.contains(event.target);
+                const sidebar = document.getElementById("sidebar");
+                const content = document.querySelector(".content");
+                const overlay = document.getElementById("overlay");
+                const toggleBtn = document.getElementById("sidebarToggle");
 
-                if (!isClickInsideSidebar && !isClickInsideToggle && window.innerWidth < 768) {
+                toggleBtn.addEventListener("click", () => {
+                    sidebar.classList.toggle("active");
+                    document.body.classList.toggle("sidebar-active");
+                });
+
+                overlay.addEventListener("click", () => {
                     sidebar.classList.remove("active");
                     document.body.classList.remove("sidebar-active");
+                });
+
+                if (
+                    !isClickInsideSidebar &&
+                    !isClickInsideToggle &&
+                    window.innerWidth < 768
+                ) {
+                    sidebar.classList.remove("active");
                     content.classList.remove("sidebar-open");
                 }
             });
@@ -672,11 +686,9 @@
             window.addEventListener("resize", function () {
                 if (window.innerWidth >= 768) {
                     sidebar.classList.add("active");
-                    document.body.classList.add("sidebar-active");
                     content.classList.add("sidebar-open");
                 } else {
                     sidebar.classList.remove("active");
-                    document.body.classList.remove("sidebar-active");
                     content.classList.remove("sidebar-open");
                 }
             });
