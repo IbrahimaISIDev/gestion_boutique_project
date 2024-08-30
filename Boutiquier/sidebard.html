@@ -428,7 +428,7 @@
         </div>
         <!-- Contenu principal -->
         <div class="content">
-            <header class="flex flex-col sm:flex-row justify-between items-center bg-white shadow-md px-4 py-2 header">
+            <header class="flex flex-col sm:flex-row justify-between items-center bg-white shadow-md px-4 py-2 header ml-5">
                 <div class="p-4 flex items-center h-32 md:hidden">
                     <svg class="w-20 h-20 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="40" height="24" rx="4" fill="white" />
@@ -490,6 +490,13 @@
                             Client</h2>
                         <form method="POST" action="#" enctype="multipart/form-data" class="space-y-4">
                             <div class="form-row mb-4 flex items-center space-x-2">
+                                <label for="prenom"
+                                    class="w-full sm:w-1/6 flex-shrink-0 font-semibold text-gray-700 flex items-center">
+                                    <i class="fas fa-user mr-2"></i>Prénom</label>
+                                <input type="text" id="prenom" name="prenom"
+                                    class="input-shadow flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div class="form-row mb-4 flex items-center space-x-2">
                                 <label for="nom"
                                     class="w-full sm:w-1/6 flex-shrink-0 font-semibold text-gray-700 flex items-center">
                                     <i class="fas fa-user mr-2"></i>Nom
@@ -497,13 +504,13 @@
                                 <input type="text" id="nom" name="nom"
                                     class="input-shadow flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
                             </div>
-                            <div class="form-row mb-4 flex items-center space-x-2">
+                            <!-- <div class="form-row mb-4 flex items-center space-x-2">
                                 <label for="prenom"
                                     class="w-full sm:w-1/6 flex-shrink-0 font-semibold text-gray-700 flex items-center">
-                                    <i class="fas fa-user mr-2"></i>Prénom</label>
+                                    <i class="fas fa-user mr-2"></i>Surnom</label>
                                 <input type="text" id="prenom" name="prenom"
                                     class="input-shadow flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                            </div>
+                            </div> -->
                             <div class="form-row mb-4 flex items-center space-x-2">
                                 <label for="telephone"
                                     class="w-1/6 flex-shrink-0 font-semibold text-gray-700 flex items-center"><i
@@ -517,21 +524,6 @@
                                         class="fas fa-map-marker-alt mr-2"></i>Adresse</label>
                                 <input type="text" id="adresse" name="adresse"
                                     class="input-shadow flex-grow p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
-                            </div>
-                            <div class="form-row mb-4 flex items-center space-x-2">
-                                <label for="genre"
-                                    class="w-1/6 flex-shrink-0 font-semibold text-gray-700 flex items-center"><i
-                                        class="fas fa-venus-mars mr-2"></i>Genre</label>
-                                <div class="flex-grow flex items-center">
-                                    <label class="mr-4 flex items-center">
-                                        <input type="radio" name="genre" value="Homme" class="mr-2">
-                                        Homme
-                                    </label>
-                                    <label class="flex items-center">
-                                        <input type="radio" name="genre" value="Femme" class="mr-2">
-                                        Femme
-                                    </label>
-                                </div>
                             </div>
                             <div class="form-row mb-4 flex items-center space-x-2">
                                 <label for="photo"
